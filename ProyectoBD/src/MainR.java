@@ -17,16 +17,23 @@ public class MainR {
 	@FXML private RadioButton rb1;
 	@FXML private RadioButton rb2;
 	@FXML private Label lb1;
+	@FXML private Label lb2;
+	@FXML private Label lb3;
+	@FXML private Label lb4;
+	@FXML private Label lb5;
+	@FXML private Label lb6;
+	@FXML private Label lb7;
+	@FXML private Label lb8;
 	@FXML private TextField tf1;
 	
 	
 	public void radioSelect (ActionEvent event) {
 		if(rb1.isSelected()) {
-			lb1.setDisable(true);
+			lb8.setDisable(true);
 			tf1.setDisable(true);
 		}
 		if(rb2.isSelected()) {
-			lb1.setDisable(false);
+			lb8.setDisable(false);
 			tf1.setDisable(false);
 		}
 
