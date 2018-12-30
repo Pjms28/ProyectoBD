@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
    <children>
       <Label layoutX="334.0" layoutY="24.0" text="FORMULARIO VISITA">
          <font>
@@ -39,19 +39,19 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="241.0" layoutY="292.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf2" layoutX="241.0" layoutY="292.0" prefHeight="31.0" prefWidth="218.0" />
       <Label fx:id="lb5" layoutX="34.0" layoutY="340.0" prefHeight="38.0" prefWidth="199.0" text="ENFERMEDAD:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="241.0" layoutY="347.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf3" layoutX="241.0" layoutY="347.0" prefHeight="31.0" prefWidth="218.0" />
       <Label fx:id="lb6" layoutX="34.0" layoutY="390.0" prefHeight="38.0" prefWidth="199.0" text="SINTOMAS:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="241.0" layoutY="393.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf4" layoutX="241.0" layoutY="393.0" prefHeight="31.0" prefWidth="218.0" />
       <Label fx:id="lb3" layoutX="34.0" layoutY="243.0" prefHeight="38.0" prefWidth="82.0" text="HORA:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -63,13 +63,13 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="241.0" layoutY="440.0" prefHeight="31.0" prefWidth="218.0" />
-      <TableView layoutX="604.0" layoutY="158.0" prefHeight="331.0" prefWidth="454.0">
+      <TextField fx:id="tf5" layoutX="241.0" layoutY="440.0" prefHeight="31.0" prefWidth="218.0" />
+      <TableView fx:id="tableview" layoutX="604.0" layoutY="158.0" prefHeight="331.0" prefWidth="454.0">
         <columns>
-          <TableColumn prefWidth="119.0" text="Visita" />
-          <TableColumn prefWidth="116.0" text="Fecha" />
-            <TableColumn minWidth="0.0" prefWidth="99.0" text="Hora" />
-            <TableColumn prefWidth="119.0" text="Tipo de visita" />
+          <TableColumn fx:id="tc1" prefWidth="119.0" text="Numero de visita" />
+          <TableColumn fx:id="tc2" prefWidth="116.0" text="Fecha" />
+            <TableColumn fx:id="tc3" minWidth="0.0" prefWidth="99.0" text="Hora" />
+            <TableColumn fx:id="tc4" prefWidth="119.0" text="Tipo de visita" />
         </columns>
       </TableView>
       <Button layoutX="45.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
