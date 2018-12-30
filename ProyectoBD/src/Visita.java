@@ -6,17 +6,21 @@ public class Visita {
 
 	private int ServicioID;
 	private int AdmisionID;
-	private Date Fecha;
+	private String Fecha;
 	private String Descripcion;
 	private String Hora;
 	private String Enfermedad;
 	private String TipoVisita;
+	private String TipoConsulta;
+	private String Sintomas;
+	private int CitaID; 
+	private int NumeroCamilla;
 	
 	public Visita() {
 	}
 	
-	public Visita(int servicioID, int admisionID, Date fecha, String descripcion, String hora, String enfermedad,
-			String tipoVisita) {
+	public Visita(int servicioID, int admisionID, String fecha, String descripcion, String hora, String enfermedad,
+			String tipoVisita, String tipoConsulta, String sintomas, int citaID, int numeroCamilla) {
 		
 		ServicioID = servicioID;
 		AdmisionID = admisionID;
@@ -25,6 +29,10 @@ public class Visita {
 		Hora = hora;
 		Enfermedad = enfermedad;
 		TipoVisita = tipoVisita;
+		TipoConsulta = tipoConsulta;
+		Sintomas = sintomas;
+		CitaID = citaID;
+		NumeroCamilla = numeroCamilla;
 	}
 	
 	public int getServicioID() {
@@ -43,11 +51,11 @@ public class Visita {
 		AdmisionID = admisionID;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return Fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		Fecha = fecha;
 	}
 
@@ -82,11 +90,45 @@ public class Visita {
 	public void setTipoVisita(String tipoVisita) {
 		TipoVisita = tipoVisita;
 	}
+	
+	public String getTipoConsulta() {
+		return TipoConsulta;
+	}
+
+	public void setTipoConsulta(String tipoConsulta) {
+		TipoConsulta = tipoConsulta;
+	}
+
+	public String getSintomas() {
+		return Sintomas;
+	}
+
+	public void setSintomas(String sintomas) {
+		Sintomas = sintomas;
+	}
+
+	public int getCitaID() {
+		return CitaID;
+	}
+
+	public void setCitaID(int citaID) {
+		CitaID = citaID;
+	}
+
+	public int getNumeroCamilla() {
+		return NumeroCamilla;
+	}
+
+	public void setNumeroCamilla(int numeroCamilla) {
+		NumeroCamilla = numeroCamilla;
+	}
 
 	@Override
 	public String toString() {
 		return "Visita [ServicioID=" + ServicioID + ", AdmisionID=" + AdmisionID + ", Fecha=" + Fecha + ", Descripcion="
-				+ Descripcion + ", Hora=" + Hora + ", Enfermedad=" + Enfermedad + ", TipoVisita=" + TipoVisita + "]";
+				+ Descripcion + ", Hora=" + Hora + ", Enfermedad=" + Enfermedad + ", TipoVisita=" + TipoVisita
+				+ ", TipoConsulta=" + TipoConsulta + ", Sintomas=" + Sintomas + ", CitaID=" + CitaID
+				+ ", NumeroCamilla=" + NumeroCamilla + "]";
 	}
 	
 	
