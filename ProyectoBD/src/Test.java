@@ -21,7 +21,6 @@ public class Test {
 		vis.setTipoConsulta("Analisis");
 		vis.setEnfermedad("Virus");
 		vis.setSintomas("Tiene la Fiebre Alta");
-		System.out.println(mensaje);
 		mensaje = vbo.agregarVisita(vis);
 		System.out.println(mensaje);
 		//vis.setCitaID((Integer) null);
