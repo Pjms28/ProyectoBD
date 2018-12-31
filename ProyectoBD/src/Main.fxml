@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
    <children>
       <Label layoutX="334.0" layoutY="24.0" text="FORMULARIO VISITA">
          <font>
@@ -82,7 +82,7 @@
          </font>
       </Label>
       <TextField fx:id="tf1" layoutX="241.0" layoutY="489.0" prefHeight="31.0" prefWidth="218.0" />
-      <Button layoutX="879.0" layoutY="609.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
+      <Button layoutX="879.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaR" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
       <Button layoutX="998.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaL" prefHeight="49.0" prefWidth="96.0" text="LICENCIA" />
       <Button layoutX="1010.0" layoutY="35.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="96.0" text="Actualizar" />
    </children>

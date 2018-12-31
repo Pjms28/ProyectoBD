@@ -15,7 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class MainR<Visita> {
+public class MainR {
 	@FXML private RadioButton rb1;
 	@FXML private RadioButton rb2;
 	@FXML private Label lb1;
@@ -74,6 +74,17 @@ public class MainR<Visita> {
 	
 public void CambiarEscenaL(ActionEvent event) throws IOException{
 	Parent LicenciaView= FXMLLoader.load(getClass().getClassLoader().getResource("Licencia.fxml"));
+	Scene LicenciaEscena = new Scene (LicenciaView);
+	Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow();
+	
+	window.setScene(LicenciaEscena);
+	window.show();
+	
+		
+	}
+
+public void CambiarEscenaR(ActionEvent event) throws IOException{
+	Parent LicenciaView= FXMLLoader.load(getClass().getClassLoader().getResource("Receta.fxml"));
 	Scene LicenciaEscena = new Scene (LicenciaView);
 	Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow();
 	

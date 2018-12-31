@@ -33,7 +33,7 @@ public class Test {
 	
 	public static void main(String[] args) throws ParseException, SQLException {
 		Test t = new Test();
-		//t.Insertar();
-		//t.Eliminar();
+		t.Insertar();
+		t.Eliminar();
 	}
 }
