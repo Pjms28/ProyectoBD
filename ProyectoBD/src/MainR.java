@@ -26,11 +26,13 @@ public class MainR {
 	@FXML private Label lb6;
 	@FXML private Label lb7;
 	@FXML private Label lb8;
+	@FXML private Label lb9;
 	@FXML private TextField tf1;
 	@FXML private TextField tf2;
 	@FXML private TextField tf3;
 	@FXML private TextField tf4;
 	@FXML private TextField tf5;
+	@FXML private TextField tf9;
 	@FXML private TableView<Visita> tableview;
 	@FXML private TableColumn<Visita, String> tc1;
 	@FXML private TableColumn<Visita, String> tc2;
