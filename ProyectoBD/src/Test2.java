@@ -3,39 +3,35 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Test {
-
-	VisitaBO vbo = new VisitaBO();
-	Visita vis = new Visita();
+public class Test2 {
+	
+	LicenciaBO libo = new LicenciaBO();
+	Licencia lin = new Licencia();
 	String mensaje = "";
 	SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 	Date today = new Date();
 	@SuppressWarnings("null")
+	
 	public void Insertar() throws ParseException, SQLException {
-		vis.setAdmisionID(1);
 		String date = "12/30/2018 00.00.00.0";
-		vis.setFecha(date);
-		vis.setDescripcion("Hola soy goku");
-		vis.setHora("3:47");
-		vis.setTipoVisita("Consulta");
-		vis.setTipoConsulta("Analisis");
-		vis.setEnfermedad("Virus");
-		vis.setSintomas("Tiene la Fiebre Alta");
-		mensaje = vbo.agregarVisita(vis);
+		String date2 = "10/23/2018 00.00.00.0";
+		lin.setDescripcion("Hola soy vegetta");
+		lin.setServicioID(1);
+		lin.setFecha_inicio(date);
+		lin.setFecha_fin(date2);
+		mensaje=libo.agregarLicencia(lin);
 		System.out.println(mensaje);
-		//vis.setCitaID((Integer) null);
-		//vis.setNumeroCamilla((Integer) null);
+		
 	}
 	
 	public void Eliminar() throws SQLException {
-		mensaje = vbo.eliminarVisita(2);
+		mensaje = libo.eliminarLicencia(2);
 	}
 	
 	public static void main(String[] args) throws ParseException, SQLException {
-		Test t = new Test();
+		Test2 t = new Test2();
 		t.Insertar();
 		//t.Eliminar();
-
-//>>>>>>> c096074a7850028becfad67b57032f6df040fa57
 	}
+
 }
