@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 
 public class VisitaBO {
@@ -11,10 +12,11 @@ private VisitaDAO vDAO = new VisitaDAO();
 	public String agregarVisita(Visita vis) throws SQLException {
 		Connection conn = Conexion.getConnection();
 		try {
+			System.out.println(vis.getFecha());
 			mensaje = vDAO.agregarVisita(conn, vis);
 			conn.commit();
 		} catch (Exception e) {
-			mensaje = mensaje + " " +e.getMessage();
+			mensaje = mensaje + " " + e.getMessage();
 			conn.rollback();
 		}finally {
 			try {

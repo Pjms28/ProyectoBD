@@ -13,7 +13,7 @@ public class Test {
 	@SuppressWarnings("null")
 	public void Insertar() throws ParseException, SQLException {
 		vis.setAdmisionID(1);
-		String date = "12/30/2018 00.00.00.0";
+		String date = "2/01/2018";
 		vis.setFecha(date);
 		vis.setDescripcion("Hola soy goku");
 		vis.setHora("3:47");
@@ -33,7 +33,7 @@ public class Test {
 	
 	public static void main(String[] args) throws ParseException, SQLException {
 		Test t = new Test();
-		//t.Insertar();
+		t.Insertar();
 		//t.Eliminar();
 
 	}

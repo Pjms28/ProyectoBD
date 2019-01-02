@@ -19,14 +19,16 @@ public class VisitaDAO {
 	
 	public String agregarVisita(Connection conn, Visita vis) throws ParseException {
 		PreparedStatement pst = null;
-		if(vis.getTipoVisita().equals("Consulta")) {
+		System.out.println(vis.getTipoVisita());
+		if(vis.getTipoVisita().equals("CONSULTA")) {
 			String sql = "INSERT INTO VISITA (SERVICIOID, ADMISIONID, FECHA, DESCRIPCION, HORA, ENFERMEDAD, TIPOVISITA, TIPOCONSULTA, SINTOMAS)"
 					+ "VALUES(VISITA_SEQ.NEXTVAL,?,?,?,?,?,?,?,?)";
 			
 			try {
 				pst = conn.prepareStatement(sql);
 				pst.setInt(1, vis.getAdmisionID());
-				SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+				System.out.println(vis.getFecha());
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				java.util.Date date = format.parse(vis.getFecha());
 				java.sql.Date sqldate = new java.sql.Date(date.getTime());
 				pst.setDate(2, sqldate);
@@ -45,12 +47,12 @@ public class VisitaDAO {
 		}
 		else {
 			String sql = "INSERT INTO VISITA (SERVICIOID, ADMISIONID, FECHA, DESCRIPCION, HORA, ENFERMEDAD, TIPOVISITA, NUMEROCAMILLA) "
-					+ "VALUES(VISITA_SEQ.NEXTVAL,?,?,?,?,?,?)";
+					+ "VALUES(VISITA_SEQ.NEXTVAL,?,?,?,?,?,?,?)";
 			
 			try {
 				pst = conn.prepareStatement(sql);
 				pst.setInt(1, vis.getAdmisionID());
-				SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				java.util.Date date = format.parse(vis.getFecha());
 				java.sql.Date sqldate = new java.sql.Date(date.getTime());
 				pst.setDate(2, sqldate);
