@@ -90,6 +90,6 @@
          </font>
       </Label>
       <TextField fx:id="tf9" layoutX="328.0" layoutY="489.0" prefHeight="31.0" prefWidth="218.0" />
-      <Button layoutX="891.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaL" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
+      <Button layoutX="891.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaR" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
    </children>
 </AnchorPane>
