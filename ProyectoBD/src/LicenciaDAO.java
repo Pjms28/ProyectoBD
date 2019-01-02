@@ -9,6 +9,7 @@ import java.sql.SQLException;
 //Ojo se deberan crear secuencias
 //LICENCIA_SEQ'
 //Esas secuencias seran agregadas a oracle
+//E
 
 public class LicenciaDAO {
 	private String mensaje = "";
