@@ -19,7 +19,7 @@ public class Visita {
 	public Visita() {
 	}
 	
-	public Visita(int servicioID, int admisionID, String fecha, String descripcion, String hora, String enfermedad,
+	/*public Visita(int servicioID, int admisionID, String fecha, String descripcion, String hora, String enfermedad,
 			String tipoVisita, String tipoConsulta, String sintomas, int citaID, int numeroCamilla) {
 		
 		ServicioID = servicioID;
@@ -33,6 +33,13 @@ public class Visita {
 		Sintomas = sintomas;
 		CitaID = citaID;
 		NumeroCamilla = numeroCamilla;
+	}*/
+	
+	public Visita(int servicioID, String fecha, String hora, String tipovisita) {
+		ServicioID = servicioID;
+		Fecha = fecha;
+		Hora = hora;
+		TipoVisita = tipovisita;
 	}
 	
 	public int getServicioID() {

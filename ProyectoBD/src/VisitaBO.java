@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javafx.scene.control.TableView;
+
 public class VisitaBO {
 
 private String mensaje = "";
@@ -67,6 +69,15 @@ private VisitaDAO vDAO = new VisitaDAO();
 		return mensaje;
 	}
 	
-	public void mostrarVisita() {
+	public void mostrarVisita(TableView<Visita> tv) {
+		Connection conn = Conexion.getConnection();
+		tv.setItems(vDAO.mostrarVisita(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
 	}
 }

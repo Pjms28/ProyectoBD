@@ -33,7 +33,7 @@
             <ToggleGroup fx:id="rvisita" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="rb2" layoutX="241.0" layoutY="148.0" mnemonicParsing="false" onAction="#radioSelect" text="EMERGENCIA" toggleGroup="$rvisita" />
-      <DatePicker layoutX="241.0" layoutY="196.0" />
+      <DatePicker fx:id="dp1" layoutX="241.0" layoutY="196.0" />
       <Label fx:id="lb4" layoutX="34.0" layoutY="288.0" prefHeight="38.0" prefWidth="199.0" text="TIPO CONSULTA:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -57,7 +57,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <DatePicker accessibleRole="BUTTON" layoutX="241.0" layoutY="247.0" />
+      <DatePicker fx:id="dp2" accessibleRole="BUTTON" layoutX="241.0" layoutY="247.0" />
       <Label fx:id="lb8" layoutX="34.0" layoutY="486.0" prefHeight="38.0" prefWidth="153.0" text="CAMILLA:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -72,9 +72,9 @@
             <TableColumn fx:id="tc4" prefWidth="119.0" text="Tipo de visita" />
         </columns>
       </TableView>
-      <Button layoutX="45.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
+      <Button layoutX="45.0" layoutY="563.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
       <Button layoutX="216.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="MODIFICAR" />
-      <Button layoutX="378.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="ELIMINAR" />
+      <Button layoutX="378.0" layoutY="563.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="70.0" prefWidth="143.0" text="ELIMINAR" />
       <Button layoutX="543.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="LIMPIAR" />
       <Label fx:id="lb7" layoutX="31.0" layoutY="437.0" prefHeight="38.0" prefWidth="171.0" text="DESCRIPCION:">
          <font>

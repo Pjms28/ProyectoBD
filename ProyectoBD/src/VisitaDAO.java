@@ -1,10 +1,16 @@
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class VisitaDAO {
@@ -109,6 +115,23 @@ public class VisitaDAO {
 		return mensaje;
 	}
 	
-	public void mostrarVisita(Connection conn, TableView<Visita> tv) {
+	public ObservableList<Visita> mostrarVisita(Connection conn) {
+		ObservableList<Visita> vis = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM VISITA ORDER BY SERVICIOID";
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				vis.add(new Visita(rs.getInt(1),rs.getDate(3).toString(),rs.getString(5),rs.getString(7)));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return vis;
+		
+		
 	}
 }
