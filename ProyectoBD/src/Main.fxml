@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
    <children>
       <Label layoutX="334.0" layoutY="24.0" text="FORMULARIO VISITA">
          <font>
@@ -90,5 +90,6 @@
          </font>
       </Label>
       <TextField fx:id="tf9" layoutX="328.0" layoutY="489.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button layoutX="891.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaL" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
    </children>
 </AnchorPane>
