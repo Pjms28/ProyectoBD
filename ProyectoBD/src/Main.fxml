@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
    <children>
       <Label layoutX="334.0" layoutY="24.0" text="FORMULARIO VISITA">
          <font>
@@ -33,37 +33,46 @@
             <ToggleGroup fx:id="rvisita" />
          </toggleGroup></RadioButton>
       <RadioButton fx:id="rb2" layoutX="241.0" layoutY="148.0" mnemonicParsing="false" onAction="#radioSelect" text="EMERGENCIA" toggleGroup="$rvisita" />
+<<<<<<< HEAD
       <DatePicker fx:id="dp1" layoutX="241.0" layoutY="196.0" />
+=======
+      <DatePicker layoutX="325.0" layoutY="196.0" />
+>>>>>>> 3a4fa8ee6aa5f5a6b43b479a3a2bb11c94905720
       <Label fx:id="lb4" layoutX="34.0" layoutY="288.0" prefHeight="38.0" prefWidth="199.0" text="TIPO CONSULTA:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tf2" layoutX="241.0" layoutY="292.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf2" layoutX="325.0" layoutY="292.0" prefHeight="31.0" prefWidth="218.0" />
       <Label fx:id="lb5" layoutX="34.0" layoutY="340.0" prefHeight="38.0" prefWidth="199.0" text="ENFERMEDAD:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tf3" layoutX="241.0" layoutY="347.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf3" layoutX="328.0" layoutY="344.0" prefHeight="31.0" prefWidth="218.0" />
       <Label fx:id="lb6" layoutX="34.0" layoutY="390.0" prefHeight="38.0" prefWidth="199.0" text="SINTOMAS:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tf4" layoutX="241.0" layoutY="393.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf4" layoutX="328.0" layoutY="394.0" prefHeight="31.0" prefWidth="218.0" />
       <Label fx:id="lb3" layoutX="34.0" layoutY="243.0" prefHeight="38.0" prefWidth="82.0" text="HORA:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <DatePicker fx:id="dp2" accessibleRole="BUTTON" layoutX="241.0" layoutY="247.0" />
       <Label fx:id="lb8" layoutX="34.0" layoutY="486.0" prefHeight="38.0" prefWidth="153.0" text="CAMILLA:">
+=======
+      <DatePicker accessibleRole="BUTTON" layoutX="325.0" layoutY="247.0" />
+      <Label fx:id="lb8" layoutX="34.0" layoutY="533.0" prefHeight="38.0" prefWidth="153.0" text="CAMILLA:">
+>>>>>>> 3a4fa8ee6aa5f5a6b43b479a3a2bb11c94905720
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tf5" layoutX="241.0" layoutY="440.0" prefHeight="31.0" prefWidth="218.0" />
+      <TextField fx:id="tf5" layoutX="328.0" layoutY="441.0" prefHeight="31.0" prefWidth="218.0" />
       <TableView fx:id="tableview" layoutX="604.0" layoutY="158.0" prefHeight="331.0" prefWidth="454.0">
         <columns>
           <TableColumn fx:id="tc1" prefWidth="119.0" text="Numero de visita" />
@@ -72,18 +81,31 @@
             <TableColumn fx:id="tc4" prefWidth="119.0" text="Tipo de visita" />
         </columns>
       </TableView>
+<<<<<<< HEAD
       <Button layoutX="45.0" layoutY="563.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
       <Button layoutX="216.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="MODIFICAR" />
       <Button layoutX="378.0" layoutY="563.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="70.0" prefWidth="143.0" text="ELIMINAR" />
       <Button layoutX="543.0" layoutY="563.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="LIMPIAR" />
+=======
+      <Button layoutX="39.0" layoutY="598.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
+      <Button layoutX="215.0" layoutY="598.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="MODIFICAR" />
+      <Button layoutX="378.0" layoutY="599.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="ELIMINAR" />
+      <Button layoutX="543.0" layoutY="598.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="143.0" text="LIMPIAR" />
+>>>>>>> 3a4fa8ee6aa5f5a6b43b479a3a2bb11c94905720
       <Label fx:id="lb7" layoutX="31.0" layoutY="437.0" prefHeight="38.0" prefWidth="171.0" text="DESCRIPCION:">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="tf1" layoutX="241.0" layoutY="489.0" prefHeight="31.0" prefWidth="218.0" />
-      <Button layoutX="879.0" layoutY="609.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
+      <TextField fx:id="tf1" layoutX="328.0" layoutY="533.0" prefHeight="31.0" prefWidth="218.0" />
       <Button layoutX="998.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaL" prefHeight="49.0" prefWidth="96.0" text="LICENCIA" />
       <Button layoutX="1010.0" layoutY="35.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="96.0" text="Actualizar" />
+      <Label fx:id="lb9" layoutX="31.0" layoutY="486.0" prefHeight="38.0" prefWidth="283.0" text="NUMERO DE ADMISION:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf9" layoutX="328.0" layoutY="489.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button layoutX="891.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaR" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
    </children>
 </AnchorPane>

@@ -18,10 +18,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class MainR {
+<<<<<<< HEAD
 	
 	Visita vis = new Visita();
 	VisitaBO Vbo = new VisitaBO();
 	
+=======
+>>>>>>> 3a4fa8ee6aa5f5a6b43b479a3a2bb11c94905720
 	@FXML private RadioButton rb1;
 	@FXML private RadioButton rb2;
 	@FXML private Label lb1;
@@ -32,13 +35,18 @@ public class MainR {
 	@FXML private Label lb6;
 	@FXML private Label lb7;
 	@FXML private Label lb8;
+<<<<<<< HEAD
 	@FXML private DatePicker dp1;
 	@FXML private DatePicker dp2;
+=======
+	@FXML private Label lb9;
+>>>>>>> 3a4fa8ee6aa5f5a6b43b479a3a2bb11c94905720
 	@FXML private TextField tf1;
 	@FXML private TextField tf2;
 	@FXML private TextField tf3;
 	@FXML private TextField tf4;
 	@FXML private TextField tf5;
+	@FXML private TextField tf9;
 	@FXML private TableView<Visita> tableview;
 	@FXML private TableColumn<Visita, String> tc1;
 	@FXML private TableColumn<Visita, String> tc2;
@@ -118,6 +126,17 @@ public class MainR {
 	
 public void CambiarEscenaL(ActionEvent event) throws IOException{
 	Parent LicenciaView= FXMLLoader.load(getClass().getClassLoader().getResource("Licencia.fxml"));
+	Scene LicenciaEscena = new Scene (LicenciaView);
+	Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow();
+	
+	window.setScene(LicenciaEscena);
+	window.show();
+	
+		
+	}
+
+public void CambiarEscenaR(ActionEvent event) throws IOException{
+	Parent LicenciaView= FXMLLoader.load(getClass().getClassLoader().getResource("Receta.fxml"));
 	Scene LicenciaEscena = new Scene (LicenciaView);
 	Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow();
 	
