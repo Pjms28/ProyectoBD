@@ -36,6 +36,5 @@ public class Test {
 		t.Insertar();
 		//t.Eliminar();
 
-//>>>>>>> c096074a7850028becfad67b57032f6df040fa57
 	}
 }

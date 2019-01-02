@@ -68,9 +68,3 @@ public class Receta {
 	
 	
 }
-
-
-
-
-
-

@@ -82,7 +82,6 @@
          </font>
       </Label>
       <TextField fx:id="tf1" layoutX="328.0" layoutY="533.0" prefHeight="31.0" prefWidth="218.0" />
-      <Button layoutX="879.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaR" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
       <Button layoutX="998.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaL" prefHeight="49.0" prefWidth="96.0" text="LICENCIA" />
       <Button layoutX="1010.0" layoutY="35.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="96.0" text="Actualizar" />
       <Label fx:id="lb9" layoutX="31.0" layoutY="486.0" prefHeight="38.0" prefWidth="283.0" text="NUMERO DE ADMISION:">
