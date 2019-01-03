@@ -6,7 +6,9 @@ public class Receta {
 	private String Descripcion;
 	private String Fecha;
 	private String Hora;
+	private String Dosis;
 	
+
 	public Receta(){
 		
 	}
@@ -57,6 +59,14 @@ public class Receta {
 
 	public void setHora(String hora) {
 		Hora = hora;
+	}
+	
+	public String getDosis() {
+		return Dosis;
+	}
+
+	public void setDosis(String dosis) {
+		Dosis = dosis;
 	}
 
 	@Override
