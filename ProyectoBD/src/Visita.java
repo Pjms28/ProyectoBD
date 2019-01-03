@@ -35,11 +35,14 @@ public class Visita {
 		NumeroCamilla = numeroCamilla;
 	}*/
 	
-	public Visita(int servicioID, String fecha, String hora, String tipovisita) {
+	public Visita(String fecha,int servicioID, String hora, String tipovisita,String Descripcion,String Enfermedad, int AdmisionID) {
 		ServicioID = servicioID;
 		Fecha = fecha;
 		Hora = hora;
 		TipoVisita = tipovisita;
+		this.Descripcion = Descripcion;
+		this.Enfermedad = Enfermedad;
+		this.AdmisionID = AdmisionID;
 	}
 	
 	public int getServicioID() {

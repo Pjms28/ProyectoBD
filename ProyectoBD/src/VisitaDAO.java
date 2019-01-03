@@ -129,7 +129,7 @@ public class VisitaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				vis.add(new Visita(rs.getInt(1),rs.getDate(3).toString(),rs.getString(5),rs.getString(7)));
+				vis.add(new Visita(rs.getDate(3).toString(),rs.getInt(1),rs.getString(5),rs.getString(7),rs.getString(4),rs.getString(6),rs.getInt(2)));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

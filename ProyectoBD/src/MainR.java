@@ -1,7 +1,5 @@
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,20 +43,24 @@ public class MainR {
 	@FXML private TableColumn<Visita, Integer> tc1;
 	@FXML private TableColumn<Visita, String> tc2;
 	@FXML private TableColumn<Visita, String> tc3;
-	@FXML private TableColumn<Visita, String> tc4;	
+	@FXML private TableColumn<Visita, String> tc4;
+	@FXML private TableColumn<Visita, String> tc5;
+	@FXML private TableColumn<Visita, Integer> tc6;
+	@FXML private TableColumn<Visita, String> tc7;
 	
 	
 	@FXML
 	public void initialize(){
-		tc1.setCellValueFactory(new PropertyValueFactory<Visita, Integer>("Numero de visita"));
+		tc1.setCellValueFactory(new PropertyValueFactory<Visita, Integer>("#Visita"));
 		tc2.setCellValueFactory(new PropertyValueFactory<Visita, String>("Fecha"));
 		tc3.setCellValueFactory(new PropertyValueFactory<Visita, String>("Hora"));
-		tc4.setCellValueFactory(new PropertyValueFactory<Visita, String>("Tipo de visita"));
+		tc4.setCellValueFactory(new PropertyValueFactory<Visita, String>("Tipo de Visita"));
+		tc6.setCellValueFactory(new PropertyValueFactory<Visita, Integer>("AdmisionId"));
+		tc5.setCellValueFactory(new PropertyValueFactory<Visita, String>("Descripcion"));
+		tc7.setCellValueFactory(new PropertyValueFactory<Visita, String>("Enfermedad"));
 		Vbo.mostrarVisita(tableview);
 	}
-	
 		
-	
 	
 	public void radioSelect (ActionEvent event) {
 		

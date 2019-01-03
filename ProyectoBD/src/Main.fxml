@@ -62,12 +62,15 @@
          </font>
       </Label>
       <TextField fx:id="tf5" layoutX="328.0" layoutY="441.0" prefHeight="31.0" prefWidth="218.0" />
-      <TableView fx:id="tableview" layoutX="604.0" layoutY="148.0" prefHeight="331.0" prefWidth="506.0">
+      <TableView fx:id="tableview" layoutX="569.0" layoutY="148.0" prefHeight="331.0" prefWidth="541.0">
         <columns>
-          <TableColumn fx:id="tc2" prefWidth="120.0" text="Fecha" />
-            <TableColumn fx:id="tc3" minWidth="0.0" prefWidth="107.0" text="Hora" />
-            <TableColumn fx:id="tc4" prefWidth="138.0" text="Tipo de visita" />
-          <TableColumn fx:id="tc1" prefWidth="140.0" text="Numero de visita" />
+          <TableColumn fx:id="tc1" prefWidth="64.0" text="#Visita" />
+          <TableColumn fx:id="tc2" prefWidth="49.0" text="Fecha" />
+            <TableColumn fx:id="tc3" minWidth="0.0" prefWidth="50.0" text="Hora" />
+            <TableColumn fx:id="tc4" prefWidth="86.0" text="Tipo de Visita" />
+            <TableColumn fx:id="tc6" prefWidth="83.0" text="#Admision" />
+            <TableColumn fx:id="tc5" prefWidth="123.0" text="Descripcion" />
+            <TableColumn fx:id="tc7" prefWidth="85.0" text="Enfermedad" />
         </columns>
       </TableView>
       <Button layoutX="39.0" layoutY="598.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
