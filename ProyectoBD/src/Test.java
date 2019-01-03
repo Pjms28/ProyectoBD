@@ -13,11 +13,11 @@ public class Test {
 	@SuppressWarnings("null")
 	public void Insertar() throws ParseException, SQLException {
 		vis.setAdmisionID(1);
-		String date = "2/01/2018";
+		String date = "2018-01-2";
 		vis.setFecha(date);
 		vis.setDescripcion("Hola soy goku");
 		vis.setHora("3:47");
-		vis.setTipoVisita("Consulta");
+		vis.setTipoVisita("CONSULTA");
 		vis.setTipoConsulta("Analisis");
 		vis.setEnfermedad("Virus");
 		vis.setSintomas("Tiene la Fiebre Alta");
@@ -31,10 +31,24 @@ public class Test {
 		mensaje = vbo.eliminarVisita(2);
 	}
 	
+	public void Modificar() throws SQLException {
+		vis.setTipoVisita("Emergencia");
+		String date = "1/JAN/2017";
+		vis.setFecha(date);
+		vis.setHora("3:48");
+		vis.setDescripcion("Accidente");
+		vis.setEnfermedad("Heridas graves");
+		vis.setNumeroCamilla(8);
+		vis.setServicioID(45);
+		mensaje = vbo.modificarVisita(vis);
+		System.out.println(mensaje);
+		
+	}
+	
 	public static void main(String[] args) throws ParseException, SQLException {
 		Test t = new Test();
-		t.Insertar();
+		//t.Insertar();
 		//t.Eliminar();
-
+		 t.Modificar();	
 	}
 }

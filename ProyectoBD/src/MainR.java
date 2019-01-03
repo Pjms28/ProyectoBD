@@ -53,7 +53,7 @@ public class MainR {
 		tc1.setCellValueFactory(new PropertyValueFactory<Visita, Integer>("Numero de visita"));
 		tc2.setCellValueFactory(new PropertyValueFactory<Visita, String>("Fecha"));
 		tc3.setCellValueFactory(new PropertyValueFactory<Visita, String>("Hora"));
-		tc4.setCellValueFactory(new PropertyValueFactory<Visita, String>("Tipo visita"));
+		tc4.setCellValueFactory(new PropertyValueFactory<Visita, String>("Tipo de visita"));
 		Vbo.mostrarVisita(tableview);
 	}
 	
@@ -94,9 +94,7 @@ public class MainR {
 			vis.setTipoVisita(rb2.getText());
 			vis.setNumeroCamilla(Integer.parseInt(tf1.getText()));
 		}
-		String date = "2-01-2018";
 		vis.setFecha(tffecha.getValue().toString());
-		System.out.println(vis.getFecha());
 		vis.setHora(tfhora.getText());
 		vis.setEnfermedad(tf3.getText());
 		vis.setDescripcion(tf5.getText());
@@ -113,8 +111,30 @@ public class MainR {
 	}
 	
 	@FXML
-	public void Modificar(ActionEvent event) {
-		
+	public void Modificar(ActionEvent event) throws SQLException {
+		if(rb1.isSelected()) {
+			vis.setTipoConsulta(tf2.getText());
+			vis.setSintomas(tf4.getText());
+			vis.setTipoVisita(rb1.getText());
+			vis.setNumeroCamilla(0);
+			
+			
+		}
+		else {
+			vis.setTipoConsulta("");
+			vis.setSintomas("");
+			vis.setTipoVisita(rb2.getText());
+			vis.setNumeroCamilla(Integer.parseInt(tf1.getText()));
+		}
+		vis.setFecha(tffecha.getValue().toString());
+		vis.setHora(tfhora.getText());
+		vis.setEnfermedad(tf3.getText());
+		vis.setDescripcion(tf5.getText());
+		vis.setAdmisionID(Integer.parseInt(tf9.getText()));
+		vis.setServicioID(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getServicioID());
+		mensaje = Vbo.modificarVisita(vis);
+		System.out.println(mensaje);
+		Vbo.mostrarVisita(tableview);
 	}
 	
 	@FXML

@@ -27,7 +27,6 @@ public class VisitaDAO {
 			try {
 				pst = conn.prepareStatement(sql);
 				pst.setInt(1, vis.getAdmisionID());
-				System.out.println(vis.getFecha());
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				java.util.Date date = format.parse(vis.getFecha());
 				java.sql.Date sqldate = new java.sql.Date(date.getTime());
@@ -74,29 +73,32 @@ public class VisitaDAO {
 		return mensaje;
 	}
 	
-	public String modificarVisita(Connection conn, Visita vis) {
+	public String modificarVisita(Connection conn, Visita vis) throws ParseException {
 		PreparedStatement pst = null;
-		String sql = "UPDATE VISITA SET FECHA = ?, DESCRIPCION = ?, HORA = ?, ENFERMEDAD = ?, TIPOVISITA = ?, TIPOCONSULTA = ?, SINTOMAS = ?, NUMEROCAMILLA = ? "
-				+ "WHERE SERVICIOID = ?";
 		
-		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, vis.getFecha());
-			pst.setString(2, vis.getDescripcion());
-			pst.setString(3, vis.getHora());
-			pst.setString(4, vis.getEnfermedad());
-			pst.setString(5, vis.getTipoVisita());
-			pst.setString(6, vis.getTipoConsulta());
-			pst.setString(7, vis.getSintomas());
-			pst.setInt(8, vis.getNumeroCamilla());
-			pst.setInt(9, vis.getServicioID());
-			mensaje = "MODIFICADO CORRECTAMENTE";
-			pst.execute();
-			pst.close();
-		} catch (SQLException e) {
-			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
-		} 		
-		
+			String sql = "UPDATE VISITA SET FECHA = ?, DESCRIPCION = ?, HORA = ?, ENFERMEDAD = ?, TIPOVISITA = ?, TIPOCONSULTA = ?, SINTOMAS = ?, NUMEROCAMILLA = ?, ADMISIONID = ?"
+					+ "WHERE SERVICIOID = ?";
+			try {
+				pst = conn.prepareStatement(sql);
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date date = format.parse(vis.getFecha());
+				java.sql.Date sqldate = new java.sql.Date(date.getTime());
+				pst.setDate(1, sqldate);
+				pst.setString(2, vis.getDescripcion());
+				pst.setString(3, vis.getHora());
+				pst.setString(4, vis.getEnfermedad());
+				pst.setString(5, vis.getTipoVisita());
+				pst.setString(6, vis.getTipoConsulta());
+				pst.setString(7, vis.getSintomas());
+				pst.setInt(8, vis.getNumeroCamilla());
+				pst.setInt(9, vis.getAdmisionID());
+				pst.setInt(10, vis.getServicioID());
+				mensaje = "MODIFICADO CORRECTAMENTE";
+				pst.execute();
+				pst.close();
+			} catch (SQLException e) {
+				mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+			} 	
 		return mensaje;
 	}
 	
@@ -119,7 +121,7 @@ public class VisitaDAO {
 	
 	public ObservableList<Visita> mostrarVisita(Connection conn) {
 		ObservableList<Visita> vis = FXCollections.observableArrayList();
-		String sql = "SELECT * FROM VISITA ORDER BY SERVICIOID";
+		String sql = "SELECT * FROM VISITA";
 		Statement st = null;
 		ResultSet rs = null;
 		
