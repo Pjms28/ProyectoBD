@@ -4,7 +4,7 @@ public class Visita {
 	
 	
 
-	private int ServicioID;
+	private long ServicioID;
 	private int AdmisionID;
 	private String Fecha;
 	private String Descripcion;
@@ -17,39 +17,20 @@ public class Visita {
 	private int NumeroCamilla;
 	
 	public Visita() {
-	}
-	
-	/*public Visita(int servicioID, int admisionID, String fecha, String descripcion, String hora, String enfermedad,
-			String tipoVisita, String tipoConsulta, String sintomas, int citaID, int numeroCamilla) {
 		
-		ServicioID = servicioID;
-		AdmisionID = admisionID;
-		Fecha = fecha;
-		Descripcion = descripcion;
-		Hora = hora;
-		Enfermedad = enfermedad;
-		TipoVisita = tipoVisita;
-		TipoConsulta = tipoConsulta;
-		Sintomas = sintomas;
-		CitaID = citaID;
-		NumeroCamilla = numeroCamilla;
-	}*/
-	
-	public Visita(String fecha,int servicioID, String hora, String tipovisita,String Descripcion,String Enfermedad, int AdmisionID) {
-		ServicioID = servicioID;
-		Fecha = fecha;
-		Hora = hora;
-		TipoVisita = tipovisita;
-		this.Descripcion = Descripcion;
-		this.Enfermedad = Enfermedad;
-		this.AdmisionID = AdmisionID;
 	}
 	
-	public int getServicioID() {
+	public Visita(long servicioID,String tipovisita,String Enfermedad) {
+		this.ServicioID = servicioID;
+		this.TipoVisita = tipovisita;
+		this.Enfermedad = Enfermedad;
+	}
+	
+	public long getServicioID() {
 		return ServicioID;
 	}
 
-	public void setServicioID(int servicioID) {
+	public void setServicioID(long servicioID) {
 		ServicioID = servicioID;
 	}
 

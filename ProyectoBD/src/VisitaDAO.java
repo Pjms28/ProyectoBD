@@ -1,17 +1,16 @@
+
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 public class VisitaDAO {
 	
@@ -92,7 +91,7 @@ public class VisitaDAO {
 				pst.setString(7, vis.getSintomas());
 				pst.setInt(8, vis.getNumeroCamilla());
 				pst.setInt(9, vis.getAdmisionID());
-				pst.setInt(10, vis.getServicioID());
+				pst.setLong(10, vis.getServicioID());
 				mensaje = "MODIFICADO CORRECTAMENTE";
 				pst.execute();
 				pst.close();
@@ -102,13 +101,13 @@ public class VisitaDAO {
 		return mensaje;
 	}
 	
-	public String eliminarVisita(Connection conn, int id) {
+	public String eliminarVisita(Connection conn, long id) {
 		PreparedStatement pst = null;
 		String sql = "DELETE FROM VISITA WHERE SERVICIOID = ?";
 		
 		try {
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, id);
+			pst.setLong(1, id);
 			mensaje = "Eliminado CORRECTAMENTE";
 			pst.execute();
 			pst.close();
@@ -129,13 +128,131 @@ public class VisitaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				vis.add(new Visita(rs.getDate(3).toString(),rs.getInt(1),rs.getString(5),rs.getString(7),rs.getString(4),rs.getString(6),rs.getInt(2)));
+				vis.add(new Visita(rs.getLong(1),rs.getString(7), rs.getString(6)));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return vis;
-		
-		
 	}
+	
+	public ObservableList<String> Opciones(Connection conn){
+		ObservableList<String> opciones = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM ENFERMEDAD";
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				opciones.add(rs.getString(2));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return opciones;
+	}
+	
+	public ObservableList<String> Detalle(Connection conn, long visitaid){
+		ObservableList<String> detalle = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM VISITA WHERE SERVICIOID = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		int Aid = 0;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, visitaid);
+			//pst.execute();
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				Aid = rs.getInt(2);
+				detalle.addAll(String.valueOf(rs.getInt(1)),String.valueOf(rs.getInt(2)),String.valueOf(rs.getDate(3)), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7));
+				if(rs.getString(7).equalsIgnoreCase("Consulta")) {
+					detalle.addAll(rs.getString(8),rs.getString(9));
+				}
+				else {
+					detalle.add(String.valueOf(rs.getInt(11)));
+				}
+			}
+			pst.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return detalle;
+	}
+	
+	public long [] DetalleAdmision(int Aid, Connection conn){
+		long a[] = new long[3];
+		String sql = "SELECT * FROM ADMISIONES WHERE ADMISIONID = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		long Pid = 0;
+		long Mid = 0;
+		long Hid = 0;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Aid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				Pid = rs.getLong(2);
+				Mid = rs.getLong(3);
+				Hid = rs.getLong(5);
+			}
+			pst.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		a[0] = Pid;
+		a[1] = Mid;
+		a[2] = Hid;
+		return a;
+	}
+	
+	public ObservableList<String> DetalleR(ObservableList<String> detalle,Connection conn, long Pid,long Mid, long Hid) {
+		String sql = "SELECT NOMBRE FROM PERSONA WHERE CEDULA = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, Pid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				detalle.add(rs.getString(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		sql = "SELECT NOMBRE FROM PERSONA WHERE CEDULA = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, Mid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				detalle.add(rs.getString(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		sql = "SELECT NOMBRE_HOSPITAL FROM HOSPITAL WHERE HOSPITALID = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, Hid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				detalle.add(rs.getString(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return detalle;
+	}
+	
 }

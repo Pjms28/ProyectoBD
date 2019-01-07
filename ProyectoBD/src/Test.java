@@ -45,10 +45,15 @@ public class Test {
 		
 	}
 	
+	public void detalle() {
+		//vbo.detalle(1);
+	}
+	
 	public static void main(String[] args) throws ParseException, SQLException {
 		Test t = new Test();
 		//t.Insertar();
 		//t.Eliminar();
-		 t.Modificar();	
+		 //t.Modificar();
+		//t.detalle();
 	}
 }
