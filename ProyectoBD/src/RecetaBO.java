@@ -93,5 +93,38 @@ public class RecetaBO {
 		}
 	}
 	
+	public void opciones2(ComboBox<Integer> cb2) {
+		Connection conn = Conexion.getConnection();
+		cb2.setItems(rDAO.Opcion2(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void opciones3(ComboBox<Integer> cb3) {
+		Connection conn = Conexion.getConnection();
+		cb3.setItems(rDAO.Opcion3(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void opciones4(ComboBox<Integer> cb4) {
+		Connection conn = Conexion.getConnection();
+		cb4.setItems(rDAO.Opcion4(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 }
