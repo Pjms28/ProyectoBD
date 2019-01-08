@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javafx.scene.control.TableView;
+
 public class LicenciaBO {
 	private String mensaje = "";
 	private LicenciaDAO ldao = new LicenciaDAO();
@@ -70,8 +72,15 @@ public class LicenciaBO {
 		return mensaje;
 		
 	}
-	public void listarLicencia() {
-
+	public void mostrarLicencia(TableView<Licencia> tv) {
+		Connection conn = Conexion.getConnection();
+		tv.setItems(ldao.mostrarVisita(conn)); 
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

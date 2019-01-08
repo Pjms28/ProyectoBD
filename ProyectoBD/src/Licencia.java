@@ -12,12 +12,11 @@ public class Licencia {
 	}
 	
 
-	public Licencia(int licenciaID, String descripcion, int servicioID, String fecha_inicio, String fecha_fin) {
+	public Licencia(int licenciaID, String descripcion, String fecha_inicio, String fecha_fin) {
 		LicenciaID = licenciaID;
 		Descripcion = descripcion;
-		ServicioID = servicioID;
-		Fecha_inicio = fecha_inicio;
-		Fecha_fin = fecha_fin;
+		Fecha_inicio= fecha_inicio;
+		Fecha_fin= fecha_fin;
 	}
 	
 	public int getLicenciaID() {
