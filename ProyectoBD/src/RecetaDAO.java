@@ -58,22 +58,24 @@ public class RecetaDAO {
 		return opciones;
 	}
 	
-	public String modificarReceta(Connection conn, Receta rec) {
+	public String modificarReceta(Connection conn, Receta rec) throws ParseException {
 		PreparedStatement pst = null;
 		String sql = "UPDATE RECETA SET DESCRIPCION= ?, FECHA= ?, HORA= ?, SERVICIOID= ?" + "WHERE RECETAID = ?";
 		
 		try{
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, rec.getDescripcion());
-			pst.setString(2, rec.getFecha());
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date date = format.parse(rec.getFecha());
+			java.sql.Date sqldate = new java.sql.Date(date.getTime());
+			pst.setDate(2,sqldate);
 			pst.setString(3, rec.getHora());
 			pst.setInt(4, rec.getServicioID());
 			pst.setInt(5, rec.getRecetaID());
 			mensaje = "MODIFICADO CORRECTAMENTE";
-			System.out.println(mensaje);
 			pst.execute();
 			pst.close();
-			
+			//System.out.println(mensaje);
 				
 		} catch (SQLException e){
 			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
