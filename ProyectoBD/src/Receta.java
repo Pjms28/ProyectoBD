@@ -1,29 +1,28 @@
 
 public class Receta {
-	
+
 	private int RecetaID;
 	private int ServicioID;
 	private String Descripcion;
 	private String Fecha;
 	private String Hora;
 	private String TipoReceta;
-	private String Dosis;
+
 	
 
 	public Receta(){
 		
 	}
 	
-	public Receta(int recetaID, int servicioID, String descripcion, String fecha, String hora, String tipoReceta,
-			String dosis) {
+	public Receta(int recetaID, int servicioID, String descripcion, String fecha, String hora) {
 		RecetaID = recetaID;
 		ServicioID = servicioID;
 		Descripcion = descripcion;
 		Fecha = fecha;
 		Hora = hora;
-		TipoReceta = tipoReceta;
-		Dosis = dosis;
+
 	}
+	
 
 	public int getRecetaID() {
 		return RecetaID;
@@ -65,14 +64,6 @@ public class Receta {
 		Hora = hora;
 	}
 	
-	public String getDosis() {
-		return Dosis;
-	}
-
-	public void setDosis(String dosis) {
-		Dosis = dosis;
-	}
-	
 	public String getTipoReceta() {
 		return TipoReceta;
 	}
@@ -84,8 +75,9 @@ public class Receta {
 	@Override
 	public String toString() {
 		return "Receta [RecetaID=" + RecetaID + ", ServicioID=" + ServicioID + ", Descripcion=" + Descripcion
-				+ ", Fecha=" + Fecha + ", Hora=" + Hora + ", TipoReceta=" + TipoReceta + ", Dosis=" + Dosis + "]";
+				+ ", Fecha=" + Fecha + ", Hora=" + Hora + ", TipoReceta=" + TipoReceta + "]";
 	}
+
 
 
 	

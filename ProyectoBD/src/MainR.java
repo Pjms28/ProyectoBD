@@ -104,7 +104,7 @@ public class MainR {
 		System.out.println(mensaje);
 		Vbo.mostrarVisita(tableview);
 	}
-	
+
 	@FXML
 	public void Eliminar(ActionEvent event) throws SQLException {
 		Vbo.eliminarVisita(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getServicioID());

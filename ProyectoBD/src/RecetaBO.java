@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 
 public class RecetaBO {
@@ -29,7 +30,7 @@ public class RecetaBO {
 		return mensaje;
 	}
 	
-	public String modificarReceta( Receta rec) throws SQLException {
+	public String modificarReceta(Receta rec) throws SQLException {
 		Connection conn = Conexion.getConnection();
 		try{
 			mensaje= rDAO.modificarReceta(conn, rec);
@@ -69,8 +70,28 @@ public class RecetaBO {
 		return mensaje;
 	}
 	
-	public void mostrarVisita(TableView<Receta> tv) {
+	public void mostrarReceta(TableView<Receta> tv) {
+		Connection conn = Conexion.getConnection();
+		tv.setItems(rDAO.mostrarReceta(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 		
 	}
+	
+	public void opciones1(ComboBox<Integer> cb) {
+		Connection conn = Conexion.getConnection();
+		cb.setItems(rDAO.Opcion1(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 }
