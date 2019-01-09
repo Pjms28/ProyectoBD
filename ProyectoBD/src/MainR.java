@@ -53,7 +53,7 @@ public class MainR {
 	
 	@FXML
 	public void initialize(){
-		tc1.setCellValueFactory(new PropertyValueFactory<Visita, Long>("Visita"));
+		tc1.setCellValueFactory(new PropertyValueFactory<Visita, Long>("ServicioID"));
 		tc2.setCellValueFactory(new PropertyValueFactory<Visita, String>("TipoVisita"));
 		tc3.setCellValueFactory(new PropertyValueFactory<Visita, String>("Enfermedad"));
 		Vbo.mostrarVisita(tableview);

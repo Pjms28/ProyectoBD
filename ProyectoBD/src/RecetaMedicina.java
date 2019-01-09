@@ -10,11 +10,10 @@ public class RecetaMedicina {
 		
 	}
 	
-	public RecetaMedicina(int recetamedicinaID, int recetaID, int medicinaID, String dosis) {
+	public RecetaMedicina(int recetamedicinaID, int recetaID, int medicinaID) {
 		RecetamedicinaID = recetamedicinaID;
 		RecetaID = recetaID;
 		MedicinaID = medicinaID;
-		Dosis = dosis;
 	}
 	
 	public int getRecetamedicinaID() {

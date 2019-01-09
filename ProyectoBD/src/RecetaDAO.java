@@ -10,59 +10,57 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 
+//saludos
+//fd
 public class RecetaDAO {
 	private String mensaje = "";
 	
-	public String agregarTipoReceta(Connection conn, Receta rec, RecetaMedicina recm, RecetaAnalisis reca) throws ParseException {
-		PreparedStatement pst = null;
+	public String agregarRecetaAnalisis(Connection conn, RecetaAnalisis reca) throws ParseException {
 		PreparedStatement pst1 = null;
-		if(rec.getTipoReceta().equals("MEDICINA")){
-			String sql1 = "INSERT INTO RECETAMEDINA (RECETAMEDICINAID, MEDICINAID, RECETAID, DOSIS)"
-					+ "VALUES(RECETAMEDICINA_SEQ.NEXTVAL,?,?,?)";
-			try{
-				pst1 = conn.prepareStatement(sql1);
-				pst1.setInt(1, rec.getRecetaID());
-				pst1.setInt(2, recm.getMedicinaID());
-				pst1.setString(3, recm.getDosis());
-				mensaje = "GUARDADO CORRECTAMENTE";
-				pst.execute();
-				pst.close();
-				pst1.execute();
-				pst1.close();
-					
-			} catch (SQLException e){
-				mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
-				
-				
-			}
+		String sql1 = "INSERT INTO RECETAANALISIS (RECETAANALISISID, RECETAID, ANALISISID)"
+				+ "VALUES(RECETAANALISIS_SEQ.NEXTVAL,?,?)";
+		
+		try{
+			pst1 = conn.prepareStatement(sql1);
 			
+			pst1.setInt(1, reca.getRecetaID());
+			pst1.setInt(2, reca.getAnalisisID());
+			pst1.execute();
+			pst1.close();
+			mensaje = "GUARDADO CORRECTAMENTE";
+			System.out.println(mensaje);
+				
+		} catch (SQLException e){
+			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
 			
-		}
-		else{
-			String sql1 = "INSERT INTO RECETAANALISIS (RECETAANALISISID, RECETAID, ANALISISID)"
-					+ "VALUES(RECETAANALISIS_SEQ.NEXTVAL,?,?)";
-
-			try{
-				pst1 = conn.prepareStatement(sql1);
-				
-				pst1.setInt(1, reca.getRecetaID());
-				pst1.setInt(2, reca.getAnalisisID());
-				pst.execute();
-				pst.close();
-				mensaje = "GUARDADO CORRECTAMENTE";
-				System.out.println(mensaje);
-					
-			} catch (SQLException e){
-				mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
-				
-				
-			}
 			
 		}
 		
 		return mensaje;
+	}
+	
+	public String agregarRecetaMedicina(Connection conn, RecetaMedicina recm) throws ParseException {
+		PreparedStatement pst1 = null;
+		String sql1 = "INSERT INTO RECETAMEDINA (RECETAMEDICINAID, MEDICINAID, RECETAID, DOSIS)"
+				+ "VALUES(RECETAMEDICINA_SEQ.NEXTVAL,?,?,?)";
+		try{
+			pst1 = conn.prepareStatement(sql1);
+			pst1.setInt(1, recm.getMedicinaID());
+			pst1.setInt(2, recm.getRecetaID());
+			pst1.setString(3, recm.getDosis());
+			mensaje = "GUARDADO CORRECTAMENTE";
+			pst1.execute();
+			pst1.close();
+				
+		} catch (SQLException e){
+			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+			
+			
+		}
+		return mensaje;
 		
 	}
+	
 	
 	public String agregarReceta(Connection conn, Receta rec) throws ParseException {
 		PreparedStatement pst = null;
@@ -163,6 +161,54 @@ public class RecetaDAO {
 		return opciones4;
 	}
 	
+	public String modificarRecetaAnalisis(Connection conn, RecetaAnalisis reca) throws ParseException {
+		PreparedStatement pst2 = null;
+		String sql2 = "UPDATE RECETAANALISIS SET RECETAID= ?, ANALISISID= ?" + "WHERE RECETAANALISISID = ?";
+		
+		try{
+			pst2 = conn.prepareStatement(sql2);
+			pst2.setInt(1, reca.getRecetaID());
+			pst2.setInt(2, reca.getAnalisisID());
+			pst2.setInt(3, reca.getRecetaanalisisID());
+			mensaje = "MODIFICADO CORRECTAMENTE";
+			System.out.println(mensaje);
+			pst2.execute();
+			pst2.close();
+				
+		} catch (SQLException e){
+			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+			
+			
+		}
+		
+		return mensaje;
+	}
+	
+	public String modificarRecetaMedicamento(Connection conn, RecetaMedicina recm) throws ParseException {
+		PreparedStatement pst1 = null;
+		String sql1 = "UPDATE RECETAMEDINA SET MEDICINAID= ?, RECETAID= ?, DOSIS= ?" + "WHERE RECETAMEDICINAID = ?";
+		
+		try{
+			pst1 = conn.prepareStatement(sql1);
+			pst1.setInt(1, recm.getRecetaID());
+			pst1.setInt(2, recm.getMedicinaID());
+			pst1.setString(3, recm.getDosis());
+			pst1.setInt(4, recm.getRecetamedicinaID());
+			mensaje = "MODIFICADO CORRECTAMENTE";
+			pst1.execute();
+			pst1.close();
+		
+		} catch (SQLException e){
+			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+			
+			
+		}
+		
+		return mensaje;
+	}
+	
+	
+	
 	public String modificarReceta(Connection conn, Receta rec) throws ParseException {
 		PreparedStatement pst = null;
 		String sql = "UPDATE RECETA SET DESCRIPCION= ?, FECHA= ?, HORA= ?, SERVICIOID= ?" + "WHERE RECETAID = ?";
@@ -207,41 +253,37 @@ public class RecetaDAO {
 		
 		return mensaje;
 	}
-	
-	public String eliminarTipoReceta(Connection conn, int id) {
-		Receta rec= new Receta();
+	public String eliminarRecetaMedicina(Connection conn, int id) {
 		PreparedStatement pst1 = null;
-		PreparedStatement pst2 = null;
-		String sql1 = "DELETE FROM RECETA WHERE RECETAMEDICINAID = ?";
-		String sql2 = "DELETE FROM RECETA WHERE RECETAANALISISID = ?";
-		
-		if(rec.getTipoReceta().equals("MEDICINA")) {
-			try {
-				pst1 = conn.prepareStatement(sql1);
-				pst1.setInt(1, id);
-				mensaje = "Eliminado CORRECTAMENTE";
-				pst1.execute();
-				pst1.close();
-			} catch (SQLException e) {
-				mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
-			} 	
-			
-		}else {
-			try {
-				pst2 = conn.prepareStatement(sql2);
-				pst2.setInt(1, id);
-				mensaje = "Eliminado CORRECTAMENTE";
-				pst2.execute();
-				pst2.close();
-			} catch (SQLException e) {
-				mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
-			} 		
-			
-			
-		}	
-		
+		String sql1 = "DELETE FROM RECETAMEDINA WHERE RECETAMEDICINAID = ?";
+		try {
+			pst1 = conn.prepareStatement(sql1);
+			pst1.setInt(1, id);
+			mensaje = "Eliminado CORRECTAMENTE";
+			pst1.execute();
+			pst1.close();
+		} catch (SQLException e) {
+			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+		} 	
 		return mensaje;
 	}
+	
+	public String eliminarRecetaAnalisis(Connection conn, int id) {
+		PreparedStatement pst2 = null;          
+		String sql2 = "DELETE FROM RECETAANALISIS WHERE RECETAANALISISID = ?";
+		try {
+			pst2 = conn.prepareStatement(sql2);
+			pst2.setInt(1, id);
+			mensaje = "Eliminado CORRECTAMENTE";
+			pst2.execute();
+			pst2.close();
+		} catch (SQLException e) {
+			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+		} 	
+		return mensaje;
+	}
+	
+	
 	
 	public ObservableList<Receta> mostrarReceta(Connection conn) {
 		ObservableList<Receta> rec = FXCollections.observableArrayList();
@@ -259,6 +301,46 @@ public class RecetaDAO {
 			System.out.println(e.getMessage());
 		}
 		return rec;
+		
+		
+	}
+	
+	public ObservableList<RecetaMedicina> mostrarTReceta(Connection conn) {
+		ObservableList<RecetaMedicina> recm = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM RECETAMEDINA";
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				recm.add(new RecetaMedicina(rs.getInt(1),rs.getInt(2),rs.getInt(3)));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return recm;
+		
+		
+	}
+	
+	public ObservableList<RecetaAnalisis> mostrarTAReceta(Connection conn) {
+		ObservableList<RecetaAnalisis> reca = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM RECETAANALISIS";
+		Statement st = null;
+		ResultSet rs = null;
+		
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				reca.add(new RecetaAnalisis(rs.getInt(1),rs.getInt(2),rs.getInt(3)));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return reca;
 		
 		
 	}

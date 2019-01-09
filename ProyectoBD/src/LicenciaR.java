@@ -40,10 +40,10 @@ public class LicenciaR  {
 	
 	@FXML
 	public void initialize(){
-		tc1.setCellValueFactory(new PropertyValueFactory<Licencia, Integer>("Licencia"));
+		tc1.setCellValueFactory(new PropertyValueFactory<Licencia, Integer>("LicenciaID"));
 		tc2.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Descripcion"));
-		tc3.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Inicio"));
-		tc4.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Fin"));
+		tc3.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Fecha_inicio"));
+		tc4.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Fecha_fin"));
 		Lbo.opciones(cbe);
 		Lbo.mostrarLicencia(tableview);
 		

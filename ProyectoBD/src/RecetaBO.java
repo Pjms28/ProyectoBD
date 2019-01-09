@@ -30,6 +30,49 @@ public class RecetaBO {
 		return mensaje;
 	}
 	
+	public String agregarRecetaAnalisis(RecetaAnalisis reca) throws ParseException, SQLException {
+		Connection conn = Conexion.getConnection();
+		try{
+			mensaje= rDAO.agregarRecetaAnalisis(conn, reca);
+			conn.commit();
+			}catch (Exception e) {
+				mensaje = mensaje + " " +e.getMessage();
+				conn.rollback();
+			}finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		return mensaje;
+	}
+	
+	
+	public String agregarRecetaMedicina(RecetaMedicina recm) throws ParseException, SQLException {
+		Connection conn = Conexion.getConnection();
+		try{
+			mensaje= rDAO.agregarRecetaMedicina(conn, recm);
+			conn.commit();
+			}catch (Exception e) {
+				mensaje = mensaje + " " +e.getMessage();
+				conn.rollback();
+			}finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		return mensaje;
+	}
+	
+	
+	
 	public String modificarReceta(Receta rec) throws SQLException {
 		Connection conn = Conexion.getConnection();
 		try{
@@ -50,6 +93,48 @@ public class RecetaBO {
 		return mensaje;
 	}
 	
+	public String modificarRecetaAnalisis(RecetaAnalisis reca) throws SQLException {
+		Connection conn = Conexion.getConnection();
+		try{
+			mensaje= rDAO.modificarRecetaAnalisis(conn, reca);
+			conn.commit();
+			}catch (Exception e) {
+				mensaje = mensaje + " " +e.getMessage();
+				conn.rollback();
+			}finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		return mensaje;
+	}
+	
+	public String modificarRecetaMedicina(RecetaMedicina recm) throws SQLException {
+		Connection conn = Conexion.getConnection();
+		try{
+			mensaje= rDAO.modificarRecetaMedicamento(conn, recm);
+			conn.commit();
+			}catch (Exception e) {
+				mensaje = mensaje + " " +e.getMessage();
+				conn.rollback();
+			}finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		return mensaje;
+	}
+	
+
+	
 	public String eliminarReceta( int id) throws SQLException {
 		Connection conn = Conexion.getConnection();
 		try{
@@ -68,6 +153,72 @@ public class RecetaBO {
 				}
 			}
 		return mensaje;
+	}
+	
+	public String eliminarRecetaAnalisis(int id) throws SQLException {
+		Connection conn = Conexion.getConnection();
+		try{
+			mensaje= rDAO.eliminarRecetaAnalisis(conn, id);
+			conn.commit();
+			}catch (Exception e) {
+				mensaje = mensaje + " " +e.getMessage();
+				conn.rollback();
+			}finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		return mensaje;
+	}
+	
+	public String eliminarRecetaMedicina( int id) throws SQLException {
+		Connection conn = Conexion.getConnection();
+		try{
+			mensaje= rDAO.eliminarRecetaMedicina(conn, id);
+			conn.commit();
+			}catch (Exception e) {
+				mensaje = mensaje + " " +e.getMessage();
+				conn.rollback();
+			}finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		return mensaje;
+	}
+	
+	
+	
+	public void mostrarRecetaMedicina(TableView<RecetaMedicina> tv) {
+		Connection conn = Conexion.getConnection();
+		tv.setItems(rDAO.mostrarTReceta(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
+	}
+	
+	public void mostrarRecetaAnalisis(TableView<RecetaAnalisis> tv) {
+		Connection conn = Conexion.getConnection();
+		tv.setItems(rDAO.mostrarTAReceta(conn));
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
 	}
 	
 	public void mostrarReceta(TableView<Receta> tv) {
