@@ -101,10 +101,9 @@ public class VisitaDAO {
 		return mensaje;
 	}
 	
-	public String eliminarVisita(Connection conn, long id) {
-		PreparedStatement pst = null;
+	public String eliminarVisita(Connection conn, long id) {	
 		String sql = "DELETE FROM VISITA WHERE SERVICIOID = ?";
-		
+		PreparedStatement pst = null;	
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setLong(1, id);
@@ -112,7 +111,7 @@ public class VisitaDAO {
 			pst.execute();
 			pst.close();
 		} catch (SQLException e) {
-			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+			mensaje = "Por favor verificar si existen Recetas o Licencias con esta visita antes de eliminar";
 		} 		
 		
 		return mensaje;
@@ -158,14 +157,11 @@ public class VisitaDAO {
 		String sql = "SELECT * FROM VISITA WHERE SERVICIOID = ?";
 		PreparedStatement pst = null;
 		ResultSet rs = null;
-		int Aid = 0;
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setLong(1, visitaid);
-			//pst.execute();
 			rs = pst.executeQuery();
 			while(rs.next()) {
-				Aid = rs.getInt(2);
 				detalle.addAll(String.valueOf(rs.getInt(1)),String.valueOf(rs.getInt(2)),String.valueOf(rs.getDate(3)), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7));
 				if(rs.getString(7).equalsIgnoreCase("Consulta")) {
 					detalle.addAll(rs.getString(8),rs.getString(9));
@@ -254,5 +250,5 @@ public class VisitaDAO {
 		
 		return detalle;
 	}
-	
+		
 }

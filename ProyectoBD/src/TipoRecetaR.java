@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class TipoRecetaR {
@@ -30,6 +31,16 @@ public class TipoRecetaR {
 	@FXML private Label lbr4;
 	@FXML private Label lbr5;
 	@FXML private Label titulo;
+	
+	
+	@FXML
+	public void initialize(){
+		Rbo.opciones2(cbe2);
+		Rbo.opciones3(cbe3);
+		Rbo.opciones4(cbe4);
+	}
+	
+	
 	
 	public void CambiarEscenaR(ActionEvent event) throws IOException{
 		Parent LicenciaView= FXMLLoader.load(getClass().getClassLoader().getResource("Receta.fxml"));

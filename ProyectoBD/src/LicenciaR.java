@@ -15,6 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class LicenciaR  {
@@ -30,18 +32,19 @@ public class LicenciaR  {
 	@FXML private DatePicker tffecha2;
 	@FXML private TextField tf1;
 	@FXML public TableView<Licencia> tableview;
-	@FXML private TableColumn<Licencia, Long> tc1;
+	@FXML private TableColumn<Licencia, Integer> tc1;
 	@FXML private TableColumn<Licencia, String> tc2;
 	@FXML private TableColumn<Licencia, String> tc3;
 	@FXML private TableColumn<Licencia, String> tc4;
-	@FXML private ComboBox<Integer> cbe;
+	@FXML private ComboBox<String> cbe;
 	
 	@FXML
 	public void initialize(){
-		tc1.setCellValueFactory(new PropertyValueFactory<Licencia, Long>("Licencia"));
+		tc1.setCellValueFactory(new PropertyValueFactory<Licencia, Integer>("Licencia"));
 		tc2.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Descripcion"));
-		tc3.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Fecha inicio"));
-		tc4.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Fecha fin"));
+		tc3.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Inicio"));
+		tc4.setCellValueFactory(new PropertyValueFactory<Licencia, String>("Fin"));
+		Lbo.opciones(cbe);
 		Lbo.mostrarLicencia(tableview);
 		
 	}
@@ -51,7 +54,7 @@ public class LicenciaR  {
 			li.setFecha_inicio(tffecha.getValue().toString());
 			li.setFecha_fin(tffecha2.getValue().toString());
 			li.setDescripcion(tf1.getText());
-			li.setServicioID(cbe.getValue());
+			li.setServicioID(Integer.valueOf(cbe.getValue()));
 			mensaje = Lbo.agregarLicencia(li);
 			System.out.println(mensaje);
 			Lbo.mostrarLicencia(tableview);
@@ -59,8 +62,9 @@ public class LicenciaR  {
 	
 	@FXML
 	public void Eliminar(ActionEvent event) throws SQLException {
-		Lbo.eliminarLicencia(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getLicenciaID());
+		mensaje = Lbo.eliminarLicencia(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getLicenciaID());
 		Lbo.mostrarLicencia(tableview);
+		System.out.println(mensaje);
 	}
 	
 	@FXML
@@ -68,9 +72,10 @@ public class LicenciaR  {
 		li.setDescripcion(tf1.getText());
 		li.setFecha_inicio(tffecha.getValue().toString());
 		li.setFecha_fin(tffecha2.getValue().toString());
-		li.setServicioID(cbe.getValue());
+		li.setServicioID(Integer.valueOf(cbe.getValue()));
 		li.setLicenciaID(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getLicenciaID());
 		mensaje = Lbo.modificarLicencia(li);
+		System.out.println(mensaje);
 		Lbo.mostrarLicencia(tableview);
 	}
 	
@@ -98,6 +103,19 @@ public class LicenciaR  {
 		window.show();
 		
 			
+		}
+	
+	public void Detalle() throws IOException{
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader();
+		AnchorPane root = (AnchorPane)loader.load(getClass().getResource("LicenciaDetalle.fxml").openStream());
+		DetalleLicencia dv = (DetalleLicencia)loader.getController();
+		Lbo.detalle(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getLicenciaID(), dv.ta);
+		Scene scene = new Scene(root);
+		stage.setScene(scene);		
+		stage.alwaysOnTopProperty();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.show();
 		}
 
 }

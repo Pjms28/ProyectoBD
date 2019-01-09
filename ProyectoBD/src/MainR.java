@@ -107,8 +107,9 @@ public class MainR {
 
 	@FXML
 	public void Eliminar(ActionEvent event) throws SQLException {
-		Vbo.eliminarVisita(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getServicioID());
+		mensaje = Vbo.eliminarVisita(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getServicioID());
 		Vbo.mostrarVisita(tableview);
+		System.out.println(mensaje);
 	}
 	
 	@FXML
@@ -184,7 +185,7 @@ public void Detalle() throws IOException{
 		DetalleVisita dv = (DetalleVisita)loader.getController();
 		Vbo.detalle(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getServicioID(), dv.ta);
 		Scene scene = new Scene(root);
-		stage.setScene(scene);
+		stage.setScene(scene);		
 		stage.alwaysOnTopProperty();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.show();

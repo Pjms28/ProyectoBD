@@ -99,7 +99,6 @@ private VisitaDAO vDAO = new VisitaDAO();
 	public void detalle(Long id, TextArea ta) {
 		ObservableList<String> d = FXCollections.observableArrayList();
 		Connection conn = Conexion.getConnection();
-		//vDAO.Detalle(conn, id);
 		long a[] = new long [3];
 		 a = vDAO.DetalleAdmision(Integer.parseInt(vDAO.Detalle(conn, id).get(1)), conn);
 		d = vDAO.DetalleR(vDAO.Detalle(conn, id), conn, a[0], a[1], a[2]);
