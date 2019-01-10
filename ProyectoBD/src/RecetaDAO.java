@@ -295,7 +295,7 @@ public class RecetaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				recm.add(new RecetaMedicina(rs.getInt(1),rs.getInt(2),rs.getInt(3)));
+				recm.add(new RecetaMedicina(rs.getInt(1),rs.getInt(3),rs.getInt(2)));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
