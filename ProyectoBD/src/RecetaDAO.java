@@ -277,7 +277,7 @@ public class RecetaDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
 			while(rs.next()) {
-				rec.add(new Receta(rs.getInt(1),rs.getInt(2),rs.getDate(4).toString(),rs.getString(3),rs.getString(5)));
+				rec.add(new Receta(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getDate(4).toString(),rs.getString(5)));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
