@@ -147,7 +147,7 @@ public class TipoRecetaR {
 			autoM.setDisable(true);
 			lbr5.setDisable(false);
 			autoA.setDisable(false);
-			Rbo.autoCompleteM(autoA);
+			Rbo.autoCompleteA(autoA);
 		}
 	}
 	
