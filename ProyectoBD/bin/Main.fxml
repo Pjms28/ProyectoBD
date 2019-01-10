@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainR">
+   <children>
+      <Label layoutX="334.0" layoutY="24.0" text="FORMULARIO VISITA">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb2" layoutX="34.0" layoutY="192.0" prefHeight="38.0" prefWidth="82.0" text="FECHA:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb1" layoutX="34.0" layoutY="139.0" prefHeight="38.0" prefWidth="153.0" text="TIPO VISITA:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="rb1" layoutX="378.0" layoutY="148.0" mnemonicParsing="false" onAction="#radioSelect" prefHeight="21.0" prefWidth="118.0" text="CONSULTA">
+         <toggleGroup>
+            <ToggleGroup fx:id="rvisita" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="rb2" layoutX="241.0" layoutY="148.0" mnemonicParsing="false" onAction="#radioSelect" text="EMERGENCIA" toggleGroup="$rvisita" />
+      <Label fx:id="lb4" layoutX="34.0" layoutY="288.0" prefHeight="38.0" prefWidth="199.0" text="TIPO CONSULTA:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf2" layoutX="325.0" layoutY="292.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label fx:id="lb5" layoutX="34.0" layoutY="340.0" prefHeight="38.0" prefWidth="199.0" text="ENFERMEDAD:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb6" layoutX="34.0" layoutY="390.0" prefHeight="38.0" prefWidth="199.0" text="SINTOMAS:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf4" layoutX="328.0" layoutY="394.0" prefHeight="31.0" prefWidth="218.0" />
+      <Label fx:id="lb3" layoutX="34.0" layoutY="243.0" prefHeight="38.0" prefWidth="82.0" text="HORA:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lb8" layoutX="34.0" layoutY="533.0" prefHeight="38.0" prefWidth="153.0" text="CAMILLA:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf5" layoutX="328.0" layoutY="441.0" prefHeight="31.0" prefWidth="218.0" />
+      <TableView fx:id="tableview" layoutX="759.0" layoutY="161.0" prefHeight="336.0" prefWidth="335.0">
+         <columns>
+            <TableColumn fx:id="tc1" prefWidth="105.0" text="ServicioID" />
+            <TableColumn fx:id="tc2" prefWidth="106.0" text="TipoVisita" />
+            <TableColumn fx:id="tc3" prefWidth="123.0" text="Enfermedad" />
+         </columns>
+      </TableView>
+      <Button layoutX="39.0" layoutY="598.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />
+      <Button layoutX="215.0" layoutY="598.0" mnemonicParsing="false" onAction="#Modificar" prefHeight="70.0" prefWidth="143.0" text="MODIFICAR" />
+      <Button layoutX="378.0" layoutY="599.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="70.0" prefWidth="143.0" text="ELIMINAR" />
+      <Button layoutX="543.0" layoutY="598.0" mnemonicParsing="false" onAction="#Limpiar" prefHeight="70.0" prefWidth="143.0" text="LIMPIAR" />
+      <Label fx:id="lb7" layoutX="31.0" layoutY="437.0" prefHeight="38.0" prefWidth="171.0" text="DESCRIPCION:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf1" layoutX="328.0" layoutY="533.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button layoutX="998.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaL" prefHeight="49.0" prefWidth="96.0" text="LICENCIA" />
+      <Label fx:id="lb9" layoutX="31.0" layoutY="486.0" prefHeight="38.0" prefWidth="283.0" text="NUMERO DE ADMISION:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf9" layoutX="328.0" layoutY="489.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button layoutX="891.0" layoutY="609.0" mnemonicParsing="false" onAction="#CambiarEscenaR" prefHeight="49.0" prefWidth="96.0" text="RECETA" />
+      <DatePicker fx:id="tffecha" layoutX="325.0" layoutY="199.0" prefHeight="25.0" prefWidth="218.0" />
+      <TextField fx:id="tfhora" layoutX="325.0" layoutY="247.0" prefHeight="31.0" prefWidth="218.0" />
+      <ComboBox fx:id="cbe" layoutX="328.0" layoutY="344.0" prefHeight="31.0" prefWidth="218.0" />
+      <Button layoutX="706.0" layoutY="598.0" mnemonicParsing="false" onAction="#Detalle" prefHeight="70.0" prefWidth="143.0" text="DETALLE" />
+   </children>
+</AnchorPane>

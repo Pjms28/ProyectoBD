@@ -105,8 +105,9 @@ public class RecetaR {
 	
 	@FXML
 	public void Eliminar(ActionEvent event) throws SQLException {
-		Rbo.eliminarReceta(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getRecetaID());
+		mensaje = Rbo.eliminarReceta(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getRecetaID());
 		Rbo.mostrarReceta(tableview);
+		System.out.println(mensaje);
 	}
 	
 	@FXML
@@ -117,6 +118,7 @@ public class RecetaR {
 		rec.setServicioID(cbe.getValue());
 		rec.setRecetaID(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getRecetaID());
 		mensaje = Rbo.modificarReceta(rec);
+		System.out.println(mensaje);
 		Rbo.mostrarReceta(tableview);
 	}
 	

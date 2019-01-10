@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import org.controlsfx.control.textfield.TextFields;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
@@ -284,5 +286,28 @@ public class RecetaBO {
 		Paciente.setText(d.get(1));
 		Medico.setText(d.get(2));
 	}
+	
+	public void autoCompleteM(TextField t) {
+		Connection conn = Conexion.getConnection();
+		TextFields.bindAutoCompletion(t, rDAO.autoM(conn));
+	}
+	
+	public void autoCompleteA(TextField t) {
+		Connection conn = Conexion.getConnection();
+		TextFields.bindAutoCompletion(t, rDAO.autoA(conn));
+	}
+	
+	public int idM(String n) {
+		Connection conn = Conexion.getConnection();
+		int a = 0;
+		a = rDAO.idM(conn, n).get(0);
+		return a;
+	}
 
+	public int idA(String n) {
+		Connection conn = Conexion.getConnection();
+		int a = 0;
+		a = rDAO.idA(conn, n).get(0);
+		return a;
+	}
 }

@@ -145,13 +145,12 @@ public class RecetaDAO {
 	
 	public String modificarRecetaAnalisis(Connection conn, RecetaAnalisis reca) throws ParseException {
 		PreparedStatement pst2 = null;
-		String sql2 = "UPDATE RECETAANALISIS SET RECETAID= ?, ANALISISID= ?" + "WHERE RECETAANALISISID = ?";
+		String sql2 = "UPDATE RECETAANALISIS SET ANALISISID= ?" + "WHERE RECETAANALISISID = ?";
 		
 		try{
 			pst2 = conn.prepareStatement(sql2);
-			pst2.setInt(1, reca.getRecetaID());
-			pst2.setInt(2, reca.getAnalisisID());
-			pst2.setInt(3, reca.getRecetaanalisisID());
+			pst2.setInt(1, reca.getAnalisisID());
+			pst2.setInt(2, reca.getRecetaanalisisID());
 			mensaje = "MODIFICADO CORRECTAMENTE";
 			System.out.println(mensaje);
 			pst2.execute();
@@ -168,14 +167,13 @@ public class RecetaDAO {
 	
 	public String modificarRecetaMedicamento(Connection conn, RecetaMedicina recm) throws ParseException {
 		PreparedStatement pst1 = null;
-		String sql1 = "UPDATE RECETAMEDINA SET MEDICINAID= ?, RECETAID= ?, DOSIS= ?" + "WHERE RECETAMEDICINAID = ?";
+		String sql1 = "UPDATE RECETAMEDINA SET MEDICINAID= ?, DOSIS= ?" + "WHERE RECETAMEDICINAID = ?";
 		
 		try{
 			pst1 = conn.prepareStatement(sql1);
-			pst1.setInt(1, recm.getRecetaID());
-			pst1.setInt(2, recm.getMedicinaID());
-			pst1.setString(3, recm.getDosis());
-			pst1.setInt(4, recm.getRecetamedicinaID());
+			pst1.setInt(1, recm.getMedicinaID());
+			pst1.setString(2, recm.getDosis());
+			pst1.setInt(3, recm.getRecetamedicinaID());
 			mensaje = "MODIFICADO CORRECTAMENTE";
 			pst1.execute();
 			pst1.close();
@@ -230,7 +228,7 @@ public class RecetaDAO {
 			pst.execute();
 			pst.close();
 		} catch (SQLException e) {
-			mensaje = "HA OCURRIDO EL SIGUENTE ERROR: \n" + e.getMessage();
+			mensaje = "No se puede eliminar la receta porque existen medicamentos o analisis registrados en la receta.";
 		} 		
 		
 		return mensaje;
@@ -404,5 +402,76 @@ public class RecetaDAO {
 		return detalle;
 	}
 	
-
+	public ObservableList<String> autoM(Connection conn){
+		ObservableList<String> m = FXCollections.observableArrayList(); 
+		String sql = "SELECT NOMBREMEDICINA FROM MEDICINA";
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				m.add(rs.getString(1));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return m;
+		
+	}
+	public ObservableList<String> autoA(Connection conn){
+		ObservableList<String> m = FXCollections.observableArrayList(); 
+		String sql = "SELECT NOMBREANALISIS FROM ANALISIS";
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				m.add(rs.getString(1));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return m;
+		
+	}
+	
+	public ObservableList<Integer> idM(Connection conn, String n){
+		ObservableList<Integer> m = FXCollections.observableArrayList(); 
+		String sql = "SELECT MEDICINAID FROM MEDICINA WHERE NOMBREMEDICINA = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, n);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				m.add(rs.getInt(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return m;
+	}
+	
+	public ObservableList<Integer> idA(Connection conn, String n){
+		ObservableList<Integer> m = FXCollections.observableArrayList(); 
+		String sql = "SELECT ANALISISID FROM ANALISIS WHERE NOMBREANALISIS = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, n);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				m.add(rs.getInt(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return m;
+	}
 }
