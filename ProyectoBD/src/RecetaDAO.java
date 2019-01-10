@@ -107,24 +107,6 @@ public class RecetaDAO {
 		return opciones;
 	}
 	
-	public ObservableList<Integer> Opcion2(Connection conn){
-		ObservableList<Integer> opciones2 = FXCollections.observableArrayList();
-		String sql = "SELECT RECETAID FROM RECETA";
-		Statement st = null;
-		ResultSet rs = null;
-		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
-			while(rs.next()) {
-				opciones2.add(rs.getInt(1));
-			}
-		} catch (Exception e) {
-	
-			System.out.println(e.getMessage());
-		}
-		return opciones2;
-	}
-	
 	public ObservableList<Integer> Opcion3(Connection conn){
 		ObservableList<Integer> opciones3 = FXCollections.observableArrayList();
 		String sql = "SELECT MEDICINAID FROM MEDICINA";
@@ -341,8 +323,86 @@ public class RecetaDAO {
 			System.out.println(e.getMessage());
 		}
 		return reca;
-		
-		
 	}
+	
+	public ObservableList<String> Detalle(Connection conn, int visitaid){
+		ObservableList<String> detalle = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM VISITA WHERE SERVICIOID = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, visitaid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				detalle.add(String.valueOf(rs.getInt(2)));
+				
+			}
+			pst.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return detalle;
+	}
+	
+	public long [] DetalleAdmision(int Aid, Connection conn){
+		long a[] = new long[2];
+		String sql = "SELECT * FROM ADMISIONES WHERE ADMISIONID = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		long Pid = 0;
+		long Mid = 0;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, Aid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				Pid = rs.getLong(2);
+				Mid = rs.getLong(3);
+			}
+			pst.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		a[0] = Pid;
+		a[1] = Mid;
+		return a;
+	}
+	
+	public ObservableList<String> DetalleR(ObservableList<String> detalle,Connection conn, long Pid,long Mid) {
+		String sql = "SELECT NOMBRE FROM PERSONA WHERE CEDULA = ?";
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, Pid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				detalle.add(rs.getString(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		sql = "SELECT NOMBRE FROM PERSONA WHERE CEDULA = ?";
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setLong(1, Mid);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				detalle.add(rs.getString(1));
+			}
+			pst.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		return detalle;
+	}
+	
 
 }

@@ -4,12 +4,14 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TipoRecetaR">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TipoRecetaR">
    <children>
       <Label fx:id="titulo" layoutX="198.0" layoutY="41.0" prefHeight="70.0" prefWidth="651.0" text="FORMULARIO TIPO RECETA">
          <font>
@@ -21,12 +23,12 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <RadioButton fx:id="rbr1" layoutX="388.0" layoutY="167.0" mnemonicParsing="false" text="MEDICINA">
+      <RadioButton fx:id="rbr1" layoutX="388.0" layoutY="167.0" mnemonicParsing="false" onAction="#radioSelect" text="MEDICINA">
          <toggleGroup>
             <ToggleGroup fx:id="b" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbr2" layoutX="504.0" layoutY="167.0" mnemonicParsing="false" text="ANALISIS" toggleGroup="$b" />
+      <RadioButton fx:id="rbr2" layoutX="504.0" layoutY="167.0" mnemonicParsing="false" onAction="#radioSelect" text="ANALISIS" toggleGroup="$b" />
       <Label fx:id="lbr2" layoutX="27.0" layoutY="218.0" prefHeight="38.0" prefWidth="171.0" text="DOSIS:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -44,7 +46,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbe2" layoutX="388.0" layoutY="268.0" prefWidth="150.0" />
       <ComboBox fx:id="cbe3" layoutX="388.0" layoutY="316.0" prefWidth="150.0" />
       <Label fx:id="lbr5" layoutX="31.0" layoutY="359.0" prefHeight="38.0" prefWidth="334.0" text="NUMERO DEL ANALISIS:">
          <font>
@@ -52,5 +53,24 @@
          </font>
       </Label>
       <ComboBox fx:id="cbe4" layoutX="388.0" layoutY="363.0" prefWidth="150.0" />
+      <TableView fx:id="tableview2" layoutX="639.0" layoutY="128.0" prefHeight="181.0" prefWidth="345.0">
+        <columns>
+          <TableColumn fx:id="tc4" prefWidth="135.0" text="RecetamedicinaID" />
+          <TableColumn fx:id="tc5" prefWidth="75.0" text="RecetaID" />
+            <TableColumn fx:id="tc6" prefWidth="134.0" text="MedicinaID" />
+        </columns>
+      </TableView>
+      <Button layoutX="45.0" layoutY="544.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="70.0" prefWidth="136.0" text="AGREGAR" />
+      <Button layoutX="207.0" layoutY="544.0" mnemonicParsing="false" onAction="#Modificar" prefHeight="70.0" prefWidth="136.0" text="MODIFICAR" />
+      <Button layoutX="361.0" layoutY="544.0" mnemonicParsing="false" onAction="#Eliminar" prefHeight="70.0" prefWidth="136.0" text="ELIMINAR" />
+      <Button layoutX="515.0" layoutY="544.0" mnemonicParsing="false" onAction="#Limpiar" prefHeight="70.0" prefWidth="136.0" text="LIMPIAR" />
+      <TableView fx:id="tableview" layoutX="639.0" layoutY="322.0" prefHeight="198.0" prefWidth="345.0">
+         <columns>
+            <TableColumn fx:id="tc1" prefWidth="135.0" text="RecetaanalisisID" />
+            <TableColumn fx:id="tc2" prefWidth="97.0" text="RecetaID" />
+            <TableColumn fx:id="tc3" prefWidth="112.0" text="AnalisisID" />
+         </columns>
+      </TableView>
+      <TextField fx:id="nReceta" layoutX="389.0" layoutY="264.0" />
    </children>
 </AnchorPane>

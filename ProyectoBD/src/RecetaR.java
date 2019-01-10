@@ -16,6 +16,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class RecetaR {
@@ -34,6 +36,8 @@ public class RecetaR {
 	@FXML private TextField tfr1;
 	@FXML private TextField tfr2;
 	@FXML private TextField tfr3;
+	@FXML private TextField nPersona;
+	@FXML private TextField nMedico;
 	@FXML private RadioButton rbr1;
 	@FXML private RadioButton rbr2;
 	@FXML private TableColumn<Receta, Integer> tc1;
@@ -50,7 +54,8 @@ public class RecetaR {
 		tc3.setCellValueFactory(new PropertyValueFactory<Receta, String>("Descripcion"));
 		tc4.setCellValueFactory(new PropertyValueFactory<Receta, String>("Fecha"));
 		tc5.setCellValueFactory(new PropertyValueFactory<Receta, String>("Hora"));
-		
+		nPersona.setDisable(true);
+		nMedico.setDisable(true);
 		Rbo.mostrarReceta(tableview);
 		Rbo.opciones1(cbe);
 	}
@@ -117,15 +122,41 @@ public class RecetaR {
 	
 	@FXML
 	public void Limpiar(ActionEvent event) {
-		 tffecha.setValue(null);;
-
+		 tffecha.setValue(null);
 		 tfr1.clear();
 		 tfr2.clear();
 		 cbe.setValue(null);;
 		 tfr1.setDisable(false);
 		 tfr2.setDisable(false);
 		 cbe.setDisable(false);
+		 nPersona.setText("");
+		 nMedico.setText("");
 
+	}
+	@FXML
+	public void info(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("TipoReceta.fxml"));
+		loader.load();
+		TipoRecetaR a = loader.getController();
+		Rbo.Id(String.valueOf(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getRecetaID()), a.nReceta);
+		Parent p = loader.getRoot();
+		Scene home_page_scene = new Scene(p);
+		Stage app_page = (Stage)(((Node) event.getSource()).getScene().getWindow());
+		//app_page.setTitle("Nueva partida");
+		app_page.setScene(home_page_scene);
+		app_page.show();
+		
+	}
+	@FXML
+	public void ComboBox (ActionEvent Event) {
+		if(cbe.getValue() != null) {
+			Rbo.info(cbe.getValue(), nPersona, nMedico);
+			
+		}
+		else {
+
+		}
 	}
 	
 //	public void radioSelect (ActionEvent event) {

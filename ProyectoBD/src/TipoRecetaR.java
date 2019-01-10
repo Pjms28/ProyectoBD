@@ -23,12 +23,12 @@ public class TipoRecetaR {
 	RecetaMedicina recm=new RecetaMedicina();
 	RecetaAnalisis reca=new RecetaAnalisis();
 	RecetaBO Rbo = new RecetaBO();
-	@FXML private ComboBox<Integer> cbe2;
 	@FXML private ComboBox<Integer> cbe3;
 	@FXML private ComboBox<Integer> cbe4;
 	@FXML private RadioButton rbr1;
 	@FXML private RadioButton rbr2;
 	@FXML private TextField tfr1;
+	@FXML public TextField nReceta;
 	@FXML private Label lbr1;
 	@FXML private Label lbr2;
 	@FXML private Label lbr3;
@@ -54,9 +54,10 @@ public class TipoRecetaR {
 		tc5.setCellValueFactory(new PropertyValueFactory<RecetaMedicina, Integer>("RecetaID"));
 		tc6.setCellValueFactory(new PropertyValueFactory<RecetaMedicina, Integer>("MedicinaID"));
 		Rbo.mostrarRecetaMedicina(tableview2);
-		Rbo.opciones2(cbe2);
+		//Rbo.opciones2(cbe2);
 		Rbo.opciones3(cbe3);
 		Rbo.opciones4(cbe4);
+		nReceta.setDisable(true);
 	}
 	
 	public void CambiarEscenaR(ActionEvent event) throws IOException{
@@ -71,14 +72,14 @@ public class TipoRecetaR {
 	@FXML
 	public void Insertar(ActionEvent event) throws SQLException, ParseException {
 		if(rbr1.isSelected()) {
-			recm.setRecetaID(cbe2.getValue());
+			recm.setRecetaID(Integer.valueOf(nReceta.getText()));
 			recm.setMedicinaID(cbe3.getValue());
 			recm.setDosis(tfr1.getText());
 			mensaje = Rbo.agregarRecetaMedicina(recm);
 			System.out.println(mensaje);
 			Rbo.mostrarRecetaMedicina(tableview2);
 		}else {
-			reca.setRecetaID(cbe2.getValue());
+			reca.setRecetaID(Integer.valueOf(nReceta.getText()));
 			reca.setAnalisisID(cbe4.getValue());
 			mensaje = Rbo.agregarRecetaAnalisis(reca);
 			System.out.println(mensaje);
@@ -105,7 +106,7 @@ public class TipoRecetaR {
 	@FXML
 	public void Modificar(ActionEvent event) throws SQLException, ParseException {
 		if(rbr1.isSelected()) {
-			recm.setRecetaID(cbe2.getValue());
+			recm.setRecetaID(Integer.valueOf(nReceta.getText()));
 			recm.setMedicinaID(cbe3.getValue());
 			recm.setDosis(tfr1.getText());
 			recm.setRecetamedicinaID(tableview2.getItems().get(tableview2.getSelectionModel().getSelectedIndex()).getRecetamedicinaID());
@@ -113,7 +114,7 @@ public class TipoRecetaR {
 			Rbo.mostrarRecetaMedicina(tableview2);
 			
 		}else {
-			reca.setRecetaID(cbe2.getValue());
+			reca.setRecetaID(Integer.valueOf(nReceta.getText()));
 			reca.setAnalisisID(cbe4.getValue());
 			reca.setRecetaanalisisID(tableview.getItems().get(tableview.getSelectionModel().getSelectedIndex()).getRecetaanalisisID());
 			Rbo.modificarRecetaAnalisis(reca);
@@ -125,7 +126,6 @@ public class TipoRecetaR {
 	public void Limpiar(ActionEvent event) {
 		tfr1.clear();
 		tfr1.setDisable(false);
-		cbe2.setValue(null);
 		cbe3.setValue(null);
 		cbe4.setValue(null);
 	}
@@ -136,7 +136,6 @@ public class TipoRecetaR {
 			lbr2.setDisable(false);
 			tfr1.setDisable(false);
 			lbr3.setDisable(false);
-			cbe2.setDisable(false);
 			lbr4.setDisable(false);
 			cbe3.setDisable(false);
 			lbr5.setDisable(true);
@@ -145,7 +144,6 @@ public class TipoRecetaR {
 			lbr2.setDisable(true);
 			tfr1.setDisable(true);
 			lbr3.setDisable(false);
-			cbe2.setDisable(false);
 			lbr4.setDisable(true);
 			cbe3.setDisable(true);
 			lbr5.setDisable(false);

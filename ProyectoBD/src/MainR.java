@@ -49,15 +49,16 @@ public class MainR {
 	@FXML private TableColumn<Visita, String> tc2;
 	@FXML private TableColumn<Visita, String> tc3;
 	@FXML private ComboBox<String> cbe;
-	
-	
+	@FXML private ComboBox<String> cba;
+	@FXML private ComboBox<Integer> idA;
 	@FXML
 	public void initialize(){
 		tc1.setCellValueFactory(new PropertyValueFactory<Visita, Long>("ServicioID"));
 		tc2.setCellValueFactory(new PropertyValueFactory<Visita, String>("TipoVisita"));
 		tc3.setCellValueFactory(new PropertyValueFactory<Visita, String>("Enfermedad"));
 		Vbo.mostrarVisita(tableview);
-		Vbo.opciones(cbe);		
+		Vbo.opciones(cbe);	
+	//Vbo.opciones2(cba);
 	}
 		
 	

@@ -2,8 +2,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class RecetaBO {
 	
@@ -244,16 +247,11 @@ public class RecetaBO {
 		}
 	}
 	
-	public void opciones2(ComboBox<Integer> cb2) {
-		Connection conn = Conexion.getConnection();
-		cb2.setItems(rDAO.Opcion2(conn));
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+	public void  Id(String id, TextField t) {
+		t.setText(id);
 	}
+	
 	
 	public void opciones3(ComboBox<Integer> cb3) {
 		Connection conn = Conexion.getConnection();
@@ -276,6 +274,15 @@ public class RecetaBO {
 			e.printStackTrace();
 		}
 	}
-	
+	public void info(int id, TextField Paciente, TextField Medico) {
+		Connection conn = Conexion.getConnection();
+		long a[] = new long [2];
+		ObservableList<String> d = FXCollections.observableArrayList();
+		d = rDAO.Detalle(conn, id);
+		a = rDAO.DetalleAdmision(Integer.parseInt(d.get(0)), conn);
+		d = rDAO.DetalleR(d, conn, a[0], a[1]);
+		Paciente.setText(d.get(1));
+		Medico.setText(d.get(2));
+	}
 
 }

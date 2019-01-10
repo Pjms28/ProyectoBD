@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecetaR">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecetaR">
    <children>
       <AnchorPane layoutX="10.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0">
          <children>
@@ -50,14 +50,26 @@
                </font>
             </Label>
             <Button layoutX="951.0" layoutY="625.0" mnemonicParsing="false" onAction="#CambiarEscenaVi" prefHeight="49.0" prefWidth="150.0" text="VOLVER A VISITA" />
-            <Button layoutX="188.0" layoutY="441.0" mnemonicParsing="false" onAction="#CambiarEscenaRetipo" prefHeight="63.0" prefWidth="150.0" text="TIPO RECETA" />
+            <Button layoutX="704.0" layoutY="560.0" mnemonicParsing="false" onAction="#info" prefHeight="70.0" prefWidth="150.0" text="TIPO RECETA" />
             <TextField fx:id="tfr1" layoutX="322.0" layoutY="250.0" prefHeight="31.0" prefWidth="218.0" />
             <Label fx:id="lbr4" layoutX="27.0" layoutY="349.0" prefHeight="38.0" prefWidth="279.0" text="NUMERO DEL SERVICIO:">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cbe" layoutX="322.0" layoutY="353.0" prefHeight="31.0" prefWidth="70.0" />
+            <ComboBox fx:id="cbe" layoutX="322.0" layoutY="353.0" onAction="#ComboBox" prefHeight="31.0" prefWidth="70.0" />
+            <Label fx:id="lbr31" layoutX="27.0" layoutY="409.0" prefHeight="38.0" prefWidth="260.0" text="Nombre del paciente: ">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbr311" layoutX="27.0" layoutY="464.0" prefHeight="38.0" prefWidth="260.0" text="Nombre del medico: ">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nMedico" layoutX="322.0" layoutY="468.0" prefHeight="31.0" prefWidth="218.0" />
+            <TextField fx:id="nPersona" layoutX="322.0" layoutY="413.0" prefHeight="31.0" prefWidth="218.0" />
          </children>
       </AnchorPane>
    </children>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LicenciaR">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LicenciaR">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="1129.0">
          <children>
@@ -34,10 +34,10 @@
             <TextField fx:id="tf1" layoutX="241.0" layoutY="296.0" prefHeight="31.0" prefWidth="218.0" />
             <TableView fx:id="tableview" layoutX="581.0" layoutY="116.0" prefHeight="331.0" prefWidth="485.0">
                <columns>
-                  <TableColumn fx:id="tc1" prefWidth="138.0" text="Licencia" />
+                  <TableColumn fx:id="tc1" prefWidth="138.0" text="LicenciaID" />
                   <TableColumn fx:id="tc2" minWidth="0.0" prefWidth="124.0" text="Descripcion" />
-                  <TableColumn fx:id="tc3" prefWidth="113.0" text="Inicio" />
-                  <TableColumn fx:id="tc4" prefWidth="109.0" text="Fin" />
+                  <TableColumn fx:id="tc3" prefWidth="113.0" text="Fecha_inicio" />
+                  <TableColumn fx:id="tc4" prefWidth="109.0" text="Fecha_fin" />
                </columns>
             </TableView>
             <Button layoutX="45.0" layoutY="563.0" mnemonicParsing="false" onAction="#Insertar" prefHeight="70.0" prefWidth="143.0" text="AGREGAR" />

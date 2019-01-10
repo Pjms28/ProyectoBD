@@ -96,6 +96,12 @@ private VisitaDAO vDAO = new VisitaDAO();
 		}
 	}
 	
+	public void opciones2(ComboBox<String> cba) {
+		ObservableList<String> op  = FXCollections.observableArrayList();
+		op.addAll("Rutinaria, Consulta, Resultados");
+		cba.setItems(op);
+	}
+	
 	public void detalle(Long id, TextArea ta) {
 		ObservableList<String> d = FXCollections.observableArrayList();
 		Connection conn = Conexion.getConnection();

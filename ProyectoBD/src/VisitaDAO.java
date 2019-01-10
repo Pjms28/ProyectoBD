@@ -179,13 +179,12 @@ public class VisitaDAO {
 	}
 	
 	public long [] DetalleAdmision(int Aid, Connection conn){
-		long a[] = new long[3];
+		long a[] = new long[2];
 		String sql = "SELECT * FROM ADMISIONES WHERE ADMISIONID = ?";
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		long Pid = 0;
 		long Mid = 0;
-		long Hid = 0;
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, Aid);
@@ -193,7 +192,6 @@ public class VisitaDAO {
 			while(rs.next()) {
 				Pid = rs.getLong(2);
 				Mid = rs.getLong(3);
-				Hid = rs.getLong(5);
 			}
 			pst.close();
 		} catch (SQLException e) {
@@ -202,7 +200,6 @@ public class VisitaDAO {
 		}
 		a[0] = Pid;
 		a[1] = Mid;
-		a[2] = Hid;
 		return a;
 	}
 	
