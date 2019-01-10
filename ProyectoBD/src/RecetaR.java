@@ -45,11 +45,12 @@ public class RecetaR {
 	
 	@FXML
 	public void initialize(){
-		tc1.setCellValueFactory(new PropertyValueFactory<Receta, Integer>("#Receta"));
+		tc1.setCellValueFactory(new PropertyValueFactory<Receta, Integer>("RecetaID"));
+		tc2.setCellValueFactory(new PropertyValueFactory<Receta, Integer>("ServicioID"));
+		tc3.setCellValueFactory(new PropertyValueFactory<Receta, String>("Descripcion"));
 		tc4.setCellValueFactory(new PropertyValueFactory<Receta, String>("Fecha"));
 		tc5.setCellValueFactory(new PropertyValueFactory<Receta, String>("Hora"));
-		tc3.setCellValueFactory(new PropertyValueFactory<Receta, String>("Descripcion"));
-		tc2.setCellValueFactory(new PropertyValueFactory<Receta, Integer>("#Servicio"));
+		
 		Rbo.mostrarReceta(tableview);
 		Rbo.opciones1(cbe);
 	}
