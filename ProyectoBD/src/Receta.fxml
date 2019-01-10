@@ -57,7 +57,6 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-<<<<<<< HEAD
             <ComboBox fx:id="cbe" layoutX="322.0" layoutY="353.0" onAction="#ComboBox" prefHeight="31.0" prefWidth="70.0" />
             <Label fx:id="lbr31" layoutX="27.0" layoutY="409.0" prefHeight="38.0" prefWidth="260.0" text="Nombre del paciente: ">
                <font>
@@ -71,10 +70,8 @@
             </Label>
             <TextField fx:id="nMedico" layoutX="322.0" layoutY="468.0" prefHeight="31.0" prefWidth="218.0" />
             <TextField fx:id="nPersona" layoutX="322.0" layoutY="413.0" prefHeight="31.0" prefWidth="218.0" />
-=======
-            <ComboBox fx:id="cbe" layoutX="322.0" layoutY="353.0" prefHeight="31.0" prefWidth="70.0" />
+            <ComboBox fx:id="cbe" layoutX="322.0" layoutY="353.0" onAction="#ComboBox" prefHeight="31.0" prefWidth="70.0" />
             <Label layoutX="964.0" layoutY="49.0" prefHeight="21.0" prefWidth="78.0" />
->>>>>>> c5ba8458a66cea933eebcf51c3b0146356cef804
          </children>
       </AnchorPane>
    </children>

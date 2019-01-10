@@ -172,7 +172,6 @@ public void CambiarEscenaR(ActionEvent event) throws IOException{
 	Parent LicenciaView= FXMLLoader.load(getClass().getClassLoader().getResource("Receta.fxml"));
 	Scene LicenciaEscena = new Scene (LicenciaView);
 	Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow();
-	
 	window.setScene(LicenciaEscena);
 	window.show();
 	
